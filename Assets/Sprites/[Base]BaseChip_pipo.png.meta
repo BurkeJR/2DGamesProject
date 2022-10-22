@@ -3476,9 +3476,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 4192
+        y: 4191
         width: 32
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3748,7 +3748,7 @@ TextureImporter:
       name: '[Base]BaseChip_pipo_34'
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 4096
         width: 32
         height: 32
@@ -3769,7 +3769,7 @@ TextureImporter:
       name: '[Base]BaseChip_pipo_35'
       rect:
         serializedVersion: 2
-        x: 96
+        x: 95
         y: 4096
         width: 32
         height: 32
@@ -3898,7 +3898,7 @@ TextureImporter:
         x: 32
         y: 4064
         width: 32
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -25274,9 +25274,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 4192
+        y: 4191
         width: 32
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -25379,9 +25379,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 4160
+        y: 4161
         width: 32
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -25400,9 +25400,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 4160
+        y: 4161
         width: 32
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
