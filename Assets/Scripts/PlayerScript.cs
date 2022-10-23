@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerScript : MonoBehaviour
@@ -8,60 +10,70 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D _rbody;
     const float SPEED = 2.5F;
     bool _facingRight = true;
-    //bool _facingUp = true;
     Animator _anim;
+    Vector2 _pointerInput, movementInput;
+    [SerializeField] private InputActionReference movement, attack, pointerPos;
+    WeaponParent _WeaponParent;
+
+    public Vector2 MovementInput { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _WeaponParent = GetComponentInChildren<WeaponParent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        _pointerInput = GetPointerInput();
         
+        _WeaponParent.PointerPosition = _pointerInput;
     }
 
     private void FixedUpdate()
     {
-        float x = SPEED * Input.GetAxisRaw("Horizontal");
-        float y = SPEED * Input.GetAxisRaw("Vertical");
-        _anim.SetFloat("Horizontal", x);
-        _anim.SetFloat("Vertical", y);
+        /*float x = SPEED * Input.GetAxisRaw("Horizontal");
+        float y = SPEED * Input.GetAxisRaw("Vertical");*/
+        movementInput = SPEED * movement.action.ReadValue<Vector2>();
 
+        Vector3 mouse = GetPointerInputForPlayer();
+        _anim.SetFloat("Horizontal", mouse.x);
+        _anim.SetFloat("Vertical", mouse.y);
 
-        /*if (x > 0 && !_facingRight)
-        {
-            FlipH();
-        }
-        if (x < 0 && _facingRight)
-        {
-            FlipH();
-        }*/
-
-        /* if(x != 0)
-         {
-             _anim.SetBool("isWalking", true);
-         }*/
-
-        _anim.SetFloat("Speed", (_rbody.velocity = new Vector2(x, y)).sqrMagnitude);
+        _anim.SetFloat("Speed", (_rbody.velocity = new Vector2(movementInput.x, movementInput.y)).sqrMagnitude);
         
     }
 
-    void FlipH()
+
+    private Vector2 GetPointerInput()
     {
-        Vector3 currentScale = gameObject.transform.localScale;
-        currentScale.x *= -1;
-        gameObject.transform.localScale = currentScale;
-        _facingRight = !_facingRight;
+        Vector3 mousePos = pointerPos.action.ReadValue<Vector2>();
+        mousePos.z = Camera.main.nearClipPlane;
+        return Camera.main.ScreenToWorldPoint(mousePos);
+    }
+    private Vector2 GetPointerInputForPlayer()
+    {
+        Vector3 mousePos = pointerPos.action.ReadValue<Vector2>();
+        mousePos.z = Camera.main.nearClipPlane;
+        return Camera.main.ScreenToWorldPoint(mousePos) - transform.position;
     }
 
-    //void FlipV()
-    //{
-    //    Vector3 currentScale = gameObject.transform.localScale;
-    //    currentScale.y *= -1;
-    //    gameObject.transform.localScale = currentScale;
-    //    _facingUp = !_facingUp;
-    //}
+    private void OnEnable()
+    {
+        attack.action.performed += PerformAttack;
+    }
+
+    private void OnDisable()
+    {
+        attack.action.performed -= PerformAttack;
+    }
+    private void PerformAttack(InputAction.CallbackContext obj)
+    {
+        _WeaponParent.Attack();
+    }
+
+
 }
