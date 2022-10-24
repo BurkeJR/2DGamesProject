@@ -6711,7 +6711,7 @@ TextureImporter:
         serializedVersion: 2
         x: 96
         y: 3520
-        width: 32
+        width: 31
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -6730,9 +6730,9 @@ TextureImporter:
       name: '[Base]BaseChip_pipo_180'
       rect:
         serializedVersion: 2
-        x: 128
+        x: 127
         y: 3520
-        width: 32
+        width: 31
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -6815,9 +6815,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3488
+        y: 3489
         width: 32
-        height: 32
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
