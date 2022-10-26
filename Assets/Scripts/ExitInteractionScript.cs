@@ -21,6 +21,8 @@ public class ExitInteractionScript : MonoBehaviour
     {
         string sceneName = SceneManager.GetActiveScene().name;
 
+        // TODO: carry over day/night cycle info
+
         if (sceneName == ConstLabels.scene_farm)
         {
             SceneManager.LoadScene(ConstLabels.scene_shop);
