@@ -136,11 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8615850879576574348, guid: ba4833f1b2b1014488210393d78b37dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.03
+      value: -2.0241
       objectReference: {fileID: 0}
     - target: {fileID: 8615850879576574348, guid: ba4833f1b2b1014488210393d78b37dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.5119
       objectReference: {fileID: 0}
     - target: {fileID: 8615850879576574348, guid: ba4833f1b2b1014488210393d78b37dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -248,10 +248,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1597700014, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6155330737357479220, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab

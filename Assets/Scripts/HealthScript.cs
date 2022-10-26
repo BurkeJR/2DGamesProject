@@ -1,18 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private int currentHealth, maxHealth;
+
+    public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
+
+    [SerializeField]
+    private bool isDead = false;
+
+    public void InitializeHealth(int healthValue)
     {
-        
+        currentHealth = healthValue;
+        maxHealth = healthValue;
+        isDead = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetHit(int amount, GameObject sender)
     {
-        
+        if (isDead)
+            return;
+        if (sender.layer == gameObject.layer)
+            return;
+
+        currentHealth -= amount;
+
+        if (currentHealth > 0)
+        {
+            OnHitWithReference?.Invoke(sender);
+        }
+        else
+        {
+            OnDeathWithReference?.Invoke(sender);
+            isDead = true;
+            Destroy(gameObject);
+        }
     }
 }

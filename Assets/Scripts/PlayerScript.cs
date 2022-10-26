@@ -9,7 +9,6 @@ public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
     const float SPEED = 2.5F;
-    bool _facingRight = true;
     Animator _anim;
     Vector2 _pointerInput, movementInput;
     [SerializeField] private InputActionReference movement, attack, pointerPos;
