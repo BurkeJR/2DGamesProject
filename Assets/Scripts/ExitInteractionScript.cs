@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class ExitInteractionScript : MonoBehaviour
 {
+    public DayNightScript _dayNightScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,8 @@ public class ExitInteractionScript : MonoBehaviour
     {
         string sceneName = SceneManager.GetActiveScene().name;
 
-        // TODO: carry over day/night cycle info
+        PlayerPrefs.SetFloat(ConstLabels.pref_timePassed, _dayNightScript._timePassed);
+        PlayerPrefs.SetFloat(ConstLabels.pref_lastUpdate, _dayNightScript._lastUpdate);
 
         if (sceneName == ConstLabels.scene_farm)
         {

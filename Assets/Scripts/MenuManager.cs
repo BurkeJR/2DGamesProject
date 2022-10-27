@@ -5,7 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-  public void ChangeScenByName(string name)
+    private void Start()
+    {
+        PlayerPrefs.SetFloat(ConstLabels.pref_timePassed, 0);
+        PlayerPrefs.SetFloat(ConstLabels.pref_lastUpdate, 0);
+    }
+
+    public void ChangeScenByName(string name)
     {
         SceneManager.LoadScene(name);
     }

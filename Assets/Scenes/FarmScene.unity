@@ -168,7 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globalLight: {fileID: 2011625239}
   _clockHand: {fileID: 772923012}
-  daytime: 1
+  _daytime: 0
+  _timePassed: 0
+  _lastUpdate: 0
 --- !u!4 &94737301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5827052701159424262, guid: 1cc202086dcab254c9cfda4cdbe47a25, type: 3}
@@ -336,6 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bfe558e0fd64b14a86ec3371600a778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dayNightScript: {fileID: 26504381}
 --- !u!61 &399173109
 BoxCollider2D:
   m_ObjectHideFlags: 0
