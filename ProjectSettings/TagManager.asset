@@ -3,28 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
   tags: []
-=======
-  tags:
-  - Bullet
-  - Enemy
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-<<<<<<< HEAD
   - 
   - Water
   - UI
   - 
-=======
-  - bullet
-  - Water
-  - UI
-  - player
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   - 
   - 
   - 
@@ -54,9 +41,3 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
-=======
-  - name: Overlay
-    uniqueID: 2863243521
-    locked: 0
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d

@@ -4,11 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 22
-<<<<<<< HEAD
   productGUID: 11e8abd1155d3a54d8a4029cdc7a3fc3
-=======
-  productGUID: ca33e0e3f25faae469304060d1fd1ca4
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -154,27 +150,16 @@ PlayerSettings:
   m_ColorGamuts: 00000000
   targetPixelDensity: 30
   resolutionScalingMode: 0
-<<<<<<< HEAD
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Standalone: com.DefaultCompany.2DProject
-=======
-  androidSupportedAspectRatio: 1
-  androidMaxAspectRatio: 2.1
-  applicationIdentifier:
-    Standalone: com.DefaultCompany.Project2
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   buildNumber:
     Standalone: 0
     iPhone: 0
     tvOS: 0
-<<<<<<< HEAD
   overrideDefaultApplicationIdentifier: 1
-=======
-  overrideDefaultApplicationIdentifier: 0
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
@@ -249,11 +234,7 @@ PlayerSettings:
   appleEnableProMotion: 0
   shaderPrecisionModel: 0
   clonedFromGUID: 10ad67313f4034357812315f3c407484
-<<<<<<< HEAD
   templatePackageId: com.unity.template.2d@5.0.2
-=======
-  templatePackageId: com.unity.template.2d@5.0.0
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   useCustomMainManifest: 0
   useCustomLauncherManifest: 0
@@ -484,13 +465,9 @@ PlayerSettings:
   switchPlayerConnectionEnabled: 1
   switchUseNewStyleFilepaths: 0
   switchUseMicroSleepForYield: 1
-<<<<<<< HEAD
   switchEnableRamDiskSupport: 0
   switchMicroSleepForYieldTime: 25
   switchRamDiskSpaceSize: 12
-=======
-  switchMicroSleepForYieldTime: 25
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   ps4NPAgeRating: 12
   ps4NPTitleSecret: 
   ps4NPTrophyPackPath: 
@@ -632,10 +609,7 @@ PlayerSettings:
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 
-<<<<<<< HEAD
   vcxProjDefaultLanguage: 
-=======
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   XboxOneProductId: 
   XboxOneUpdateKey: 
   XboxOneSandboxId: 
@@ -677,11 +651,7 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-<<<<<<< HEAD
   activeInputHandler: 0
-=======
-  activeInputHandler: 2
->>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
