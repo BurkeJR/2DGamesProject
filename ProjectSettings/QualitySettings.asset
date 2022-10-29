@@ -201,7 +201,11 @@ QualitySettings:
     skinWeights: 255
     textureQuality: 0
     anisotropicTextures: 2
+<<<<<<< HEAD
     antiAliasing: 2
+=======
+    antiAliasing: 0
+>>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
@@ -225,11 +229,16 @@ QualitySettings:
   m_PerPlatformDefaultQuality:
     Android: 2
     Lumin: 5
+<<<<<<< HEAD
     GameCoreScarlett: 5
     GameCoreXboxOne: 5
     Nintendo Switch: 5
     PS4: 5
     PS5: 5
+=======
+    Nintendo Switch: 5
+    PS4: 5
+>>>>>>> 09b60066792c6c9557c3b9c23601c41d22eb214d
     Stadia: 5
     Standalone: 5
     WebGL: 3
