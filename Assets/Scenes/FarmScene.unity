@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dayNightScript: {fileID: 26504381}
+  _globalLight: {fileID: 2011625239}
 --- !u!61 &399173109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -918,11 +919,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155330737357479226, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.5
+      value: 4.48
       objectReference: {fileID: 0}
     - target: {fileID: 6155330737357479226, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.37
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 6155330737357479226, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
       propertyPath: m_LocalPosition.z

@@ -7,6 +7,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class ExitInteractionScript : MonoBehaviour
 {
     public DayNightScript _dayNightScript;
+    public Light2D _globalLight;
 
     // Start is called before the first frame update
     void Start()
@@ -22,18 +23,25 @@ public class ExitInteractionScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-
-        PlayerPrefs.SetFloat(ConstLabels.pref_timePassed, _dayNightScript._timePassed);
-        PlayerPrefs.SetFloat(ConstLabels.pref_lastUpdate, _dayNightScript._lastUpdate);
-
-        if (sceneName == ConstLabels.scene_farm)
+        if (collision.tag.Equals(ConstLabels.tag_player))
         {
-            SceneManager.LoadScene(ConstLabels.scene_shop);
-        } 
-        else if (sceneName == ConstLabels.scene_shop)
-        {
-            SceneManager.LoadScene(ConstLabels.scene_farm);
+            string sceneName = SceneManager.GetActiveScene().name;
+
+            PlayerPrefs.SetFloat(ConstLabels.pref_timePassed, _dayNightScript._timePassed);
+            PlayerPrefs.SetFloat(ConstLabels.pref_lastUpdate, _dayNightScript._lastUpdate);
+
+            PlayerPrefs.SetFloat(ConstLabels.pref_light_r, _globalLight.color.r);
+            PlayerPrefs.SetFloat(ConstLabels.pref_light_g, _globalLight.color.g);
+            PlayerPrefs.SetFloat(ConstLabels.pref_light_b, _globalLight.color.b);
+
+            if (sceneName == ConstLabels.scene_farm)
+            {
+                SceneManager.LoadScene(ConstLabels.scene_shop);
+            }
+            else if (sceneName == ConstLabels.scene_shop)
+            {
+                SceneManager.LoadScene(ConstLabels.scene_farm);
+            }
         }
     }
 }

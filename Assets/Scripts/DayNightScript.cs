@@ -38,6 +38,11 @@ public class DayNightScript : MonoBehaviour
     {
         _timePassed = PlayerPrefs.GetFloat(ConstLabels.pref_timePassed);
         _lastUpdate = PlayerPrefs.GetFloat(ConstLabels.pref_lastUpdate);
+        _globalLight.color = new Color(PlayerPrefs.GetFloat(ConstLabels.pref_light_r), 
+            PlayerPrefs.GetFloat(ConstLabels.pref_light_g),
+            PlayerPrefs.GetFloat(ConstLabels.pref_light_b));
+
+        _daytime = _timePassed / _cycleLength <= 0.5f;
 
         _incrementScale = _cycleLength / _updateInterval / 2;
         _redIncrease = (_dayColor.r - _nightColor.r) / _incrementScale;
