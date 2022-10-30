@@ -28,8 +28,13 @@ public class bulletScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collider)
     {
+        HealthScript health;
+        if (health = collider.gameObject.GetComponent<HealthScript>())
+        {
+            health.GetHit(2, collider.gameObject);
+        }
         Destroy(gameObject);
     }
 }

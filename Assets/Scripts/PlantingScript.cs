@@ -22,16 +22,16 @@ public class PlantingScript : MonoBehaviour
     List<GameObject> _seedList;
 
     // tuples of crop game objects and the float of the time they were created.
-    List<Tuple<GameObject, float>> _cropList;
+    public List<GameObject> _cropList;
 
-    List<Tuple<GameObject, float>> _animalList;
+    List<GameObject> _animalList;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _cropList = new List<Tuple<GameObject,float>>();
-        _animalList = new List<Tuple<GameObject, float>>();
+        _cropList = new List<GameObject>();
+        _animalList = new List<GameObject>();
         _seedList = new List<GameObject>();
 
         // _cornObject = Instantiate(_CornPrefab);
@@ -51,7 +51,7 @@ public class PlantingScript : MonoBehaviour
             if (OnSoil() && Time.time - _lastPlanted > 1)
             {
                 var plant = Instantiate(_seedList[_currentSeed], _player.transform.position, Quaternion.identity);
-                _cropList.Add(Tuple.Create(plant, Time.time));
+                _cropList.Add(plant);
                 _seedList.RemoveAt(_currentSeed);
                 print(_seedList.Count);
                 _lastPlanted = Time.time;

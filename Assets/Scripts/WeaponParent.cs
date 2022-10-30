@@ -12,6 +12,7 @@ public class WeaponParent : MonoBehaviour
     private bool _attackBlocked = false;
     private bool _swordOut = false;
     public GameObject _bulletPrefab;
+    public int _ammo = 7;
 
     private GameObject _sword;
     private GameObject _gun;
@@ -25,10 +26,12 @@ public class WeaponParent : MonoBehaviour
         _sword = this.transform.GetChild(2).gameObject;
         _gun = this.transform.GetChild(0).gameObject;
         _muzzle = this.transform.GetChild(1).gameObject;
+        PlayerPrefs.SetInt("Ammo", _ammo);
     }
 
     private void Update()
     {
+        PlayerPrefs.SetInt("Ammo", _ammo);
         if (Input.GetKey(KeyCode.Alpha1))
         {
             _swordOut = false;
@@ -80,10 +83,14 @@ public class WeaponParent : MonoBehaviour
         }
         else 
         {
-            _ganimator.SetTrigger("Attack");
-            _attackBlocked = true;
-            GameObject clone = Instantiate(_bulletPrefab, transform.GetChild(1).transform.position, transform.rotation);
-            StartCoroutine(DelayAttack(_gunDelay));
+            if(_ammo > 0) {
+                _ganimator.SetTrigger("Attack");
+                _attackBlocked = true;
+                GameObject clone = Instantiate(_bulletPrefab, transform.GetChild(1).transform.position, transform.rotation);
+                _ammo--;
+                StartCoroutine(DelayAttack(_gunDelay));
+            }
+            
         }
         
     }

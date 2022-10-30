@@ -382,6 +382,7 @@ MonoBehaviour:
   _gunDelay: 0.5
   _swordDelay: 0.3
   _bulletPrefab: {fileID: 1918678212893361177, guid: bbfa256c4e6f26a4489f5c8ca6327c25, type: 3}
+  _ammo: 7
   _origin: {fileID: 786260664}
   radius: 0.38
 --- !u!212 &993255516
@@ -665,7 +666,6 @@ GameObject:
   - component: {fileID: 1651773156}
   - component: {fileID: 1651773153}
   - component: {fileID: 1651773152}
-  - component: {fileID: 1378646435}
   m_Layer: 6
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -823,27 +823,6 @@ MonoBehaviour:
   movement: {fileID: -7649202214084460177, guid: a8bf76ce0d2e61e46b91d9fddef40679, type: 3}
   attack: {fileID: -8398734029940179906, guid: a8bf76ce0d2e61e46b91d9fddef40679, type: 3}
   pointerPos: {fileID: -4924429414318355399, guid: a8bf76ce0d2e61e46b91d9fddef40679, type: 3}
---- !u!114 &1378646435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6155330737357479220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390b8161bb4dfe345ad12f829c7f1373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 2
-  maxHealth: 2
-  OnHitWithReference:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeathWithReference:
-    m_PersistentCalls:
-      m_Calls: []
-  isDead: 0
 --- !u!1 &7954289592949788958
 GameObject:
   m_ObjectHideFlags: 0

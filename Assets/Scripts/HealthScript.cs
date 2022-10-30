@@ -40,4 +40,17 @@ public class HealthScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collider)
+    {
+        if(collider.gameObject.tag == "Bullet")
+        {
+            currentHealth -= 2;
+        }
+        Debug.Log("Hit");
+        if(currentHealth <= 0)
+        {
+            isDead = true;
+            Destroy(gameObject);
+        }
+    }
 }
