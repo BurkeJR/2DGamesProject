@@ -68,7 +68,7 @@ public class WeaponParent : MonoBehaviour
 
     public void Attack()
     {
-        if(_attackBlocked)
+        if(_attackBlocked || Time.timeScale == 0)
         {
             return;
         }
