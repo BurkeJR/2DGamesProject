@@ -5028,10 +5028,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globalLight: {fileID: 2011625239}
   _clockHand: {fileID: 772923012}
-<<<<<<< HEAD
-=======
+
   _weapon: {fileID: 1659150779}
->>>>>>> 00406bfa0714143f8d962fbc29e7d888f8ac867c
+
   _daytime: 0
   _timePassed: 0
   _lastUpdate: 0
