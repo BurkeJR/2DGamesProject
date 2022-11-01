@@ -40,4 +40,8 @@ public class ConstLabels
 
     /* layers */
 
+
+
+    /* ints */
+    public const int start_ammo = 7;
 }
