@@ -34,9 +34,15 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat(ConstLabels.pref_light_b, _dayColor.b);
 
         // player
-        PlayerPrefs.SetInt(ConstLabels.pref_player_bullets, 10);
+        PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, 7);
         PlayerPrefs.SetInt(ConstLabels.pref_player_currency, 0);
         PlayerPrefs.SetInt(ConstLabels.pref_player_gun_damage, 2);
         PlayerPrefs.SetInt(ConstLabels.pref_player_melee_damage, 1);
+
+        // upgrades
+        PlayerPrefs.SetInt(ConstLabels.pref_upgrade_melee, 0);
+        PlayerPrefs.SetInt(ConstLabels.pref_upgrade_gun, 0);
+        PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 1);
+        PlayerPrefs.SetFloat(ConstLabels.pref_upgrade_speed, 0);
     }
 }

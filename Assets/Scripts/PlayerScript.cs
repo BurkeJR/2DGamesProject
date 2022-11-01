@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
-    const float SPEED = 4F;
+    float SPEED;
     Animator _anim;
     Vector2 _pointerInput, movementInput;
     [SerializeField] private InputActionReference movement, attack, pointerPos;
@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
         _rbody = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _WeaponParent = GetComponentInChildren<WeaponParent>();
+        SPEED = 4F + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_speed);
     }
 
     // Update is called once per frame

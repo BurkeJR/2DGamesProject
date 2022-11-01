@@ -14,7 +14,7 @@ public class WeaponParent : MonoBehaviour
     private bool _swordOut = false;
 
     public GameObject _bulletPrefab;
-    public int _ammo = 7;
+    public int _ammo;
 
     private GameObject _sword;
     private GameObject _gun;
@@ -31,10 +31,13 @@ public class WeaponParent : MonoBehaviour
         _sword = this.transform.GetChild(2).gameObject;
         _gun = this.transform.GetChild(0).gameObject;
         _muzzle = this.transform.GetChild(1).gameObject;
-        PlayerPrefs.SetInt("Ammo", _ammo);
+        _ammo = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo)
+            * PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo);
 
-        _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_gun_damage);
-        _swordDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_melee_damage);
+        _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_gun_damage) 
+            + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee);
+        _swordDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_melee_damage)
+            + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_gun);
 
         if (_gunDamage == 0)
         {
@@ -48,7 +51,6 @@ public class WeaponParent : MonoBehaviour
 
     private void Update()
     {
-        PlayerPrefs.SetInt("Ammo", _ammo);
         if (Input.GetKey(KeyCode.Alpha1))
         {
             _swordOut = false;
@@ -106,6 +108,7 @@ public class WeaponParent : MonoBehaviour
                 GameObject clone = Instantiate(_bulletPrefab, transform.GetChild(1).transform.position, transform.rotation);
                 clone.GetComponent<bulletScript>()._damage = _gunDamage;
                 _ammo--;
+                PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, _ammo);
                 StartCoroutine(DelayAttack(_gunDelay));
             }
             

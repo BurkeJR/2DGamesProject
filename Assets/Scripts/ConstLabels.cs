@@ -4,6 +4,8 @@ public class ConstLabels
     /* tags */
     public const string tag_player = "Player";
     public const string tag_enemy = "Enemy";
+    public const string tag_crop = "Crop";
+    public const string tag_bullet = "Bullet";
 
 
     /* scenes */
@@ -27,6 +29,13 @@ public class ConstLabels
     public const string pref_player_gun_damage = "GunDamage";
     public const string pref_player_melee_damage = "MeleeDamage";
     public const string pref_player_currency = "Currency";
+    public const string pref_player_ammo = "Ammo";
+
+    // upgrades
+    public const string pref_upgrade_melee = "MeleeUpgrade";
+    public const string pref_upgrade_gun = "GunUpgrade";
+    public const string pref_upgrade_ammo = "AmmoUpgrade";
+    public const string pref_upgrade_speed = "SpeedUpgrade";
 
 
     /* layers */

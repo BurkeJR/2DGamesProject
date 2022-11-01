@@ -7,18 +7,31 @@ using UnityEngine.UI;
 public class ShopInteractionScript : MonoBehaviour
 {
     public GameObject _shopCanvas;
+
     public Text _meleeCostText;
     public Text _gunCostText;
     public Text _bulletCostText;
+    public Text _speedCostText;
+
+    public GameObject _meleeButton;
+    public GameObject _gunButton;
+    public GameObject _bulletButton;
+    public GameObject _speedButton;
 
     bool _spriteOn;
     bool _shopOpen;
+
+    int _playerCurrency;
+    int _upgradeCost = 100;
 
     private void Start()
     {
         _spriteOn = false;
         _shopOpen = false;
         _shopCanvas.SetActive(false);
+
+        _playerCurrency = PlayerPrefs.GetInt(ConstLabels.pref_player_currency);
+        UpdateShop();
     }
 
     private void Update()
@@ -71,5 +84,81 @@ public class ShopInteractionScript : MonoBehaviour
     void ResumeGame()
     {
         Time.timeScale = 1;
+    }
+
+    void UpdateShop()
+    {
+        if (_playerCurrency < _upgradeCost)
+        {
+            _meleeButton.GetComponent<Button>().interactable = false;
+            _gunButton.GetComponent<Button>().interactable = false;
+            _bulletButton.GetComponent<Button>().interactable = false;
+            _speedButton.GetComponent<Button>().interactable = false;
+        }
+
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) != 0)
+        {
+            _meleeCostText.text = "----";
+            _meleeButton.GetComponent<Button>().interactable = false;
+        }
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_gun) != 0)
+        {
+            _gunCostText.text = "----";
+            _gunButton.GetComponent<Button>().interactable = false;
+        }
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) != 0)
+        {
+            _bulletCostText.text = "----";
+            _bulletButton.GetComponent<Button>().interactable = false;
+        }
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_speed) != 0)
+        {
+            _speedCostText.text = "----";
+            _speedButton.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    public void UpgradeMelee()
+    {
+        if (_upgradeCost < _playerCurrency)
+        {
+            _playerCurrency -= _upgradeCost;
+            PlayerPrefs.SetInt(ConstLabels.pref_upgrade_melee, 1);
+            PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
+            UpdateShop();
+        }
+    }
+
+    public void UpgradeGun()
+    {
+        if (_upgradeCost < _playerCurrency)
+        {
+            _playerCurrency -= _upgradeCost;
+            PlayerPrefs.SetInt(ConstLabels.pref_upgrade_gun, 1);
+            PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
+            UpdateShop();
+        }
+    }
+
+    public void UpgradeAmmo()
+    {
+        if (_upgradeCost < _playerCurrency)
+        {
+            _playerCurrency -= _upgradeCost;
+            PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 2);
+            PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
+            UpdateShop();
+        }
+    }
+
+    public void UpgradeSpeed()
+    {
+        if (_upgradeCost < _playerCurrency)
+        {
+            _playerCurrency -= _upgradeCost;
+            PlayerPrefs.SetInt(ConstLabels.pref_upgrade_speed, 1);
+            PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
+            UpdateShop();
+        }
     }
 }

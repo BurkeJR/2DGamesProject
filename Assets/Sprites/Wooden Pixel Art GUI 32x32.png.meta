@@ -647,6 +647,9 @@ TextureImporter:
   - first:
       213: 5314369995609614075
     second: pannel
+  - first:
+      213: -3847894078049873017
+    second: shop background large
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -5246,6 +5249,27 @@ TextureImporter:
       bones: []
       spriteID: bf62e41ba5f60c940800000000000000
       internalID: 5314369995609614075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop background large
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 384
+        width: 92
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 783128819b8899ac0800000000000000
+      internalID: -3847894078049873017
       vertices: []
       indices: 
       edges: []
