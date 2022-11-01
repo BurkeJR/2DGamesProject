@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class farmMGRScript : MonoBehaviour
@@ -16,5 +17,10 @@ public class farmMGRScript : MonoBehaviour
     void Update()
     {
         ammo.text = PlayerPrefs.GetInt("Ammo").ToString();
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
