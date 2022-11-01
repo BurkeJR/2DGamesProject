@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globalLight: {fileID: 2011625239}
   _clockHand: {fileID: 772923012}
+  _weapon: {fileID: 1659150779}
   _daytime: 0
   _timePassed: 0
   _lastUpdate: 0
@@ -1387,6 +1388,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2064846346, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
+      propertyPath: _dnScript
+      value: 
+      objectReference: {fileID: 26504381}
     - target: {fileID: 6155330737357479220, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -1569,6 +1574,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8991254563318600966, guid: be418fff8771462498572eb95dbd75a5, type: 3}
   m_PrefabInstance: {fileID: 1573535645}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1659150779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2064846346, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
+  m_PrefabInstance: {fileID: 1247903931}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9d3054b5e283548ad9eb4a5086e601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1670756976
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class DayNightScript : MonoBehaviour
     public Light2D _globalLight;
     public GameObject _clockHand;
 
+    public WeaponParent _weapon;
+    public bool _ammoReset;
+
     public bool _daytime;
 
     // the length of the day/night cycle
@@ -24,8 +27,6 @@ public class DayNightScript : MonoBehaviour
     float _redIncrease;
     float _greenIncrease;
     float _blueIncrease;
-
-    
 
     Transform _clockHandTransform;
     float _currentHandRotation;
@@ -87,5 +88,16 @@ public class DayNightScript : MonoBehaviour
             _currentHandRotation += _handRotationIncrement;
             _clockHandTransform.eulerAngles = new Vector3(0, 0, -_currentHandRotation);
         }
+
+        if (_daytime && _ammoReset)
+        {
+            _weapon.ResetAmmo();
+            _ammoReset = false;
+        }
+        else if (!_daytime)
+        {
+            _ammoReset = true;
+        }
     }
+
 }
