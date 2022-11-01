@@ -21,7 +21,7 @@ public class farmMGRScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(ConstLabels.menu_scene);
         }
         ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
         coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
