@@ -2979,13 +2979,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globalLight: {fileID: 1807285289}
   _clockHand: {fileID: 6155330737063824660}
-<<<<<<< HEAD
   ammo: {fileID: 838769397}
   coins: {fileID: 1859220029}
-=======
   _weapon: {fileID: 6155330737063824661}
   _ammoReset: 0
->>>>>>> 00406bfa0714143f8d962fbc29e7d888f8ac867c
   _daytime: 0
   _timePassed: 0
   _lastUpdate: 0
