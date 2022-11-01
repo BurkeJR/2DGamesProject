@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class farmMGRScript : MonoBehaviour
 {
     public Text ammo;
+    public Text coins;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class farmMGRScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ammo.text = PlayerPrefs.GetInt("Ammo").ToString();
+        ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
+        coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
     }
 }

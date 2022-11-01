@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1466562642312495316}
   - component: {fileID: -704324974765539439}
   - component: {fileID: -7406570201681902467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CornCropPrefab
   m_TagString: Crop
   m_Icon: {fileID: 0}

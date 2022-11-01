@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 684854183}
   - component: {fileID: 684854182}
   - component: {fileID: 684854184}
+  - component: {fileID: 773130110}
   m_Layer: 0
   m_Name: PidgeonPrefab
   m_TagString: Enemy
@@ -4924,3 +4925,17 @@ MonoBehaviour:
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &773130110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615850879576574353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 659d86daae176614d83d3ba31921bec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _manager: {fileID: 0}
