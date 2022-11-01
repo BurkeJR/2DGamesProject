@@ -9,8 +9,10 @@ public class WeaponParent : MonoBehaviour
     public Animator _sanimator;
     public float _gunDelay = 0.5f;
     public float _swordDelay = 0.3f;
+
     private bool _attackBlocked = false;
     private bool _swordOut = false;
+
     public GameObject _bulletPrefab;
     public int _ammo = 7;
 
@@ -21,12 +23,27 @@ public class WeaponParent : MonoBehaviour
     public Transform _origin;
     public float radius;
 
+    int _gunDamage;
+    int _swordDamage;
+
     private void Start()
     {
         _sword = this.transform.GetChild(2).gameObject;
         _gun = this.transform.GetChild(0).gameObject;
         _muzzle = this.transform.GetChild(1).gameObject;
         PlayerPrefs.SetInt("Ammo", _ammo);
+
+        _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_gun_damage);
+        _swordDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_melee_damage);
+
+        if (_gunDamage == 0)
+        {
+            _gunDamage = 2;
+        }
+        if (_swordDamage == 0)
+        {
+            _swordDamage = 1;
+        }
     }
 
     private void Update()
@@ -87,6 +104,7 @@ public class WeaponParent : MonoBehaviour
                 _ganimator.SetTrigger("Attack");
                 _attackBlocked = true;
                 GameObject clone = Instantiate(_bulletPrefab, transform.GetChild(1).transform.position, transform.rotation);
+                clone.GetComponent<bulletScript>()._damage = _gunDamage;
                 _ammo--;
                 StartCoroutine(DelayAttack(_gunDelay));
             }
@@ -110,13 +128,14 @@ public class WeaponParent : MonoBehaviour
 
     public void DetectColliders()
     {
-        foreach(Collider2D collider in Physics2D.OverlapCircleAll(_origin.position, radius))
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(_origin.position, radius))
         {
             HealthScript health;
-            if(health = collider.GetComponent<HealthScript>())
+            if (health = collider.GetComponent<HealthScript>())
             {
-                health.GetHit(1, transform.parent.gameObject);
+                health.GetHit(_swordDamage, transform.parent.gameObject);
             }
+            //print("sword hit " + collider.gameObject.tag);
         }
     }
 

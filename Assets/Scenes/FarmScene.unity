@@ -287,22 +287,6 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 26504379}
-    - target: {fileID: 2039912644281214818, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
-      propertyPath: m_Size.x
-      value: 0.5007727
-      objectReference: {fileID: 0}
-    - target: {fileID: 2039912644281214818, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
-      propertyPath: m_Size.y
-      value: 0.4809058
-      objectReference: {fileID: 0}
-    - target: {fileID: 2039912644281214818, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.002785921
-      objectReference: {fileID: 0}
-    - target: {fileID: 2039912644281214818, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.008956894
-      objectReference: {fileID: 0}
     - target: {fileID: 5325674860267672920, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -350,10 +334,6 @@ PrefabInstance:
     - target: {fileID: 5325674860267672923, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
       propertyPath: m_Name
       value: BlackBearPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 5325674860267672923, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
@@ -928,14 +908,6 @@ PrefabInstance:
     - target: {fileID: 8615850879576574348, guid: ba4833f1b2b1014488210393d78b37dc, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8615850879576574348, guid: ba4833f1b2b1014488210393d78b37dc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8615850879576574348, guid: ba4833f1b2b1014488210393d78b37dc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8615850879576574348, guid: ba4833f1b2b1014488210393d78b37dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1531,32 +1503,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1047338626112194199, guid: f213a0bb0c0643d4d9ad3a814cf05ddc, type: 3}
   m_PrefabInstance: {fileID: 1296405873}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1445993375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5325674860267672923, guid: 5549da0c88eb60146bf3b75d83392e81, type: 3}
-  m_PrefabInstance: {fileID: 132320385}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1445993380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445993375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390b8161bb4dfe345ad12f829c7f1373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 2
-  maxHealth: 2
-  OnHitWithReference:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeathWithReference:
-    m_PersistentCalls:
-      m_Calls: []
-  isDead: 0
 --- !u!1001 &1573535645
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,8 +13,6 @@ public class PlantingScript : MonoBehaviour
     public GameObject _PepperPrefab;
     public GameObject _BeanPrefab;
 
-
-
     int _currentSeed;
     float _lastPlanted;
 
@@ -24,14 +22,11 @@ public class PlantingScript : MonoBehaviour
     // tuples of crop game objects and the float of the time they were created.
     public List<GameObject> _cropList;
 
-    List<GameObject> _animalList;
-
 
     // Start is called before the first frame update
     void Start()
     {
         _cropList = new List<GameObject>();
-        _animalList = new List<GameObject>();
         _seedList = new List<GameObject>();
 
         // _cornObject = Instantiate(_CornPrefab);
@@ -57,8 +52,6 @@ public class PlantingScript : MonoBehaviour
                 _lastPlanted = Time.time;
             }
         }
-
-
     }
 
     bool OnSoil()
