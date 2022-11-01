@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Experimental.Rendering.Universal;
 
 public class DayNightScript : MonoBehaviour
 {
     public Light2D _globalLight;
     public GameObject _clockHand;
+    public Text ammo;
+    public Text coins;
 
     public WeaponParent _weapon;
     public bool _ammoReset;
@@ -55,6 +58,12 @@ public class DayNightScript : MonoBehaviour
         _currentHandRotation = 360 * (_timePassed/_cycleLength);
 
         _clockHandTransform.eulerAngles = new Vector3(0, 0, -_currentHandRotation);
+    }
+
+    private void Update()
+    {
+        ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
+        coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WeaponParent : MonoBehaviour
 {
@@ -50,11 +51,11 @@ public class WeaponParent : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKey(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "ShopScene")
         {
             _swordOut = false;
         }
-        else if (Input.GetKey(KeyCode.Alpha2))
+        else if (Input.GetKey(KeyCode.Alpha2) || SceneManager.GetActiveScene().name == "ShopScene")
         {
             _swordOut = true;
         }
@@ -79,7 +80,7 @@ public class WeaponParent : MonoBehaviour
             _muzzle.SetActive(false);
             _gun.SetActive(false);
         }
-        else
+        else if(!_swordOut && SceneManager.GetActiveScene().name != "ShopScene")
         {
             _sword.SetActive(false);
             _muzzle.SetActive(true);

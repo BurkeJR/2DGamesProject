@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class farmMGRScript : MonoBehaviour
 {
     public Text ammo;
+    public Text coins;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +23,7 @@ public class farmMGRScript : MonoBehaviour
         {
             SceneManager.LoadScene("MainMenu");
         }
+        ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
+        coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8764510951885638137}
   - component: {fileID: 1304243383885008587}
   - component: {fileID: 2835974520632041076}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EggplantCropPrefab
   m_TagString: Crop
   m_Icon: {fileID: 0}

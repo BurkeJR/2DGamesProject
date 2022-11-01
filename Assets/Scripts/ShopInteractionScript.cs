@@ -31,6 +31,7 @@ public class ShopInteractionScript : MonoBehaviour
         _shopCanvas.SetActive(false);
 
         _playerCurrency = PlayerPrefs.GetInt(ConstLabels.pref_player_currency);
+        PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, 6);
         UpdateShop();
     }
 

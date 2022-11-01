@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6879792057061102320}
   - component: {fileID: 2407563647776414862}
   - component: {fileID: 8732460308553699885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BeanCropPrefab
   m_TagString: Crop
   m_Icon: {fileID: 0}

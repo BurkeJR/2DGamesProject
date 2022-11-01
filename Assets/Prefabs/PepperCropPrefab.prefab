@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7216802661196878990}
   - component: {fileID: -4015403235757329074}
   - component: {fileID: 2018934201795691557}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PepperCropPrefab
   m_TagString: Crop
   m_Icon: {fileID: 0}
