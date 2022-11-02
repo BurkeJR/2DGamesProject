@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class farmMGRScript : MonoBehaviour
 {
-    public Text ammo;
-    public Text coins;
 
     public PlantingScript plScript;
 
@@ -27,12 +25,9 @@ public class farmMGRScript : MonoBehaviour
             SceneManager.LoadScene(ConstLabels.menu_scene);
         }
 
-        ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
-        coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
-
         if (currDay < PlayerPrefs.GetInt(ConstLabels.pref_currentDay))
         {
-            PlayerPrefs.SetInt(ConstLabels.pref_player_currency, PlayerPrefs.GetInt(ConstLabels.pref_player_currency) + (50 * plScript._cropList.Count));
+            PlayerPrefs.SetInt(ConstLabels.pref_player_currency, PlayerPrefs.GetInt(ConstLabels.pref_player_currency) + (15 * plScript._cropList.Count));
             plScript.HarvestCrops();
             currDay++;
         }

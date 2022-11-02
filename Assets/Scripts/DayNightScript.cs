@@ -66,7 +66,9 @@ public class DayNightScript : MonoBehaviour
 
     private void Update()
     {
-        
+        ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
+        coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
+        dayNumber.text = "Day " + PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
     }
 
     // Update is called once per frame
@@ -78,7 +80,6 @@ public class DayNightScript : MonoBehaviour
         {
             _timePassed -= _cycleLength;
             PlayerPrefs.SetInt(ConstLabels.pref_currentDay, PlayerPrefs.GetInt(ConstLabels.pref_currentDay) + 1);
-            dayNumber.text = "Day " + PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
         }
 
         //if (PlayerPrefs.GetInt(ConstLabels.pref_currentDay) < ((int)(_timePassed / _cycleLength)))

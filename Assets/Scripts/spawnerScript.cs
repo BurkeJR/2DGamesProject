@@ -29,11 +29,9 @@ public class spawnerScript : MonoBehaviour
         }
     }
 
-    private int spawnEnemy(GameObject toSpawn)
+    private int spawnEnemy(GameObject toSpawn, float x, float y)
     {
         System.Random rand = new System.Random();
-        float x = rand.Next(-9, 19);
-        float y = rand.Next(-21, -3);
         Vector2 pos = new Vector2(x, y);
         GameObject clone = Instantiate(toSpawn, pos, Quaternion.identity);
         clone.GetComponent<EnemyScript>()._manager = this.gameObject;
@@ -44,7 +42,9 @@ public class spawnerScript : MonoBehaviour
     {
        System.Random rand = new System.Random();
         float wait = rand.Next(1, 5);
+        float x = rand.Next(-9, 19);
+        float y = rand.Next(-21, -3);
         yield return new WaitForSeconds(wait);
-        spawnEnemy(toSpawn);
+        spawnEnemy(toSpawn, x, y);
     }
 }
