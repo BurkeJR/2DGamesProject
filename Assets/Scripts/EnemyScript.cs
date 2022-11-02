@@ -78,6 +78,7 @@ public class EnemyScript : MonoBehaviour
             {
                 _touchedPlant = false;
                 _plantScript._cropList.Remove(toDestroy);
+                // get list of targetting animals and retarget them here
                 Destroy(toDestroy);
             }
 

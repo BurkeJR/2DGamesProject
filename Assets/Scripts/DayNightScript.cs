@@ -11,12 +11,6 @@ public class DayNightScript : MonoBehaviour
     public Light2D _globalLight;
     public GameObject _clockHand;
 
-    //public WeaponParent _weapon;
-    //public bool _ammoReset;
-    public Text dayNumber;
-    public Text ammo;
-    public Text coins;
-
     public bool _daytime;
 
     // the length of the day/night cycle
@@ -66,9 +60,7 @@ public class DayNightScript : MonoBehaviour
 
     private void Update()
     {
-        ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
-        coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
-        dayNumber.text = "Day " + PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
+        
     }
 
     // Update is called once per frame

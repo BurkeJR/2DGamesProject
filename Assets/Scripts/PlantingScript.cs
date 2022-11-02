@@ -19,13 +19,6 @@ public class PlantingScript : MonoBehaviour
     public GameObject _PepperPrefab;
     public GameObject _BeanPrefab;
 
-    public Text cornSeeds;
-    public Text beanSeeds;
-    public Text pepperSeeds;
-    public Text carrotSeeds;
-    public Text eggplantSeeds;
-
-
     int _currentSeed;
     float _lastPlanted;
 
@@ -49,12 +42,6 @@ public class PlantingScript : MonoBehaviour
         AddSeed(_BeanPrefab);
 
         _currentSeed = 0;
-
-        cornSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds).ToString();
-        beanSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds).ToString();
-        pepperSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds).ToString();
-        carrotSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds).ToString();
-        eggplantSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds).ToString();
 
         _lastPlanted = Time.time;
 
@@ -98,35 +85,30 @@ public class PlantingScript : MonoBehaviour
         if (plantPrefab == _CornPrefab)
         {
             _seedList.Add(plantPrefab);
-            PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) + 1);
-            cornSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds).ToString();
+            PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, 1);
 
         } else if (plantPrefab == _BeanPrefab)
         {
             _seedList.Add(plantPrefab);
-            PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds) + 1);
-            beanSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds).ToString();
+            PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, 1);
 
         }
         else if (plantPrefab == _PepperPrefab)
         {
             _seedList.Add(plantPrefab);
-            PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds) + 1);
-            pepperSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds).ToString();
+            PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, 1);
 
         }
         else if (plantPrefab == _EggplantPrefab)
         {
             _seedList.Add(plantPrefab);
-            PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds) + 1);
-            eggplantSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds).ToString();
+            PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, 1);
 
         }
         else if (plantPrefab == _CarrotPrefab)
         {
             _seedList.Add(plantPrefab);
-            PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) + 1);
-            carrotSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds).ToString();
+            PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, 1);
             
         }
     }
@@ -136,27 +118,22 @@ public class PlantingScript : MonoBehaviour
         if (_seedList[_currentSeed] == _CornPrefab)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) - 1);
-            cornSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds).ToString();
         }
         else if (_seedList[_currentSeed] == _CarrotPrefab)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) - 1);
-            carrotSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds).ToString();
         }
         else if (_seedList[_currentSeed] == _BeanPrefab)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds) - 1);
-            beanSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds).ToString();
         }
         else if (_seedList[_currentSeed] == _PepperPrefab)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds) - 1);
-            pepperSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds).ToString();
         }
         else if (_seedList[_currentSeed] == _EggplantPrefab)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds) - 1);
-            eggplantSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds).ToString();
         }
         var plant = Instantiate(_seedList[_currentSeed], _player.transform.position, Quaternion.identity);
         _cropList.Add(plant);
