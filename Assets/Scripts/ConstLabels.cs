@@ -38,6 +38,12 @@ public class ConstLabels
     public const string pref_upgrade_ammo = "AmmoUpgrade";
     public const string pref_upgrade_speed = "SpeedUpgrade";
 
+    // plants
+    public const string pref_corn_seeds = "CornSeeds";
+    public const string pref_bean_seeds = "BeanSeeds";
+    public const string pref_pepper_seeds = "PepperSeeds";
+    public const string pref_carrot_seeds = "CarrotSeeds";
+    public const string pref_eggplant_seeds = "EggplantSeeds";
 
     /* layers */
 
@@ -46,4 +52,5 @@ public class ConstLabels
     /* ints */
     public const int start_ammo = 7;
 
+    
 }

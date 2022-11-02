@@ -44,5 +44,12 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt(ConstLabels.pref_upgrade_gun, 0);
         PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 1);
         PlayerPrefs.SetFloat(ConstLabels.pref_upgrade_speed, 0);
+
+        // seeds
+        PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, 0);
+        PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, 0);
+        PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, 0);
+        PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, 0);
+        PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, 0);
     }
 }
