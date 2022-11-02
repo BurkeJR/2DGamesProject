@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(SpriteRenderer))]
 public class ShopInteractionScript : MonoBehaviour
 {
+    public WeaponParent _weapon;
+
     public GameObject _shopCanvas;
 
     public Text _meleeCostText;
@@ -31,9 +33,11 @@ public class ShopInteractionScript : MonoBehaviour
         _shopCanvas.SetActive(false);
 
         _playerCurrency = PlayerPrefs.GetInt(ConstLabels.pref_player_currency);
-        PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, 6);
+        _weapon.ResetAmmo();
         UpdateShop();
     }
+
+    
 
     private void Update()
     {
@@ -107,7 +111,7 @@ public class ShopInteractionScript : MonoBehaviour
             _gunCostText.text = "----";
             _gunButton.GetComponent<Button>().interactable = false;
         }
-        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) != 0)
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) != 1)
         {
             _bulletCostText.text = "----";
             _bulletButton.GetComponent<Button>().interactable = false;
@@ -149,6 +153,7 @@ public class ShopInteractionScript : MonoBehaviour
             PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 2);
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
             UpdateShop();
+            _weapon.ResetAmmo();
         }
     }
 

@@ -23,7 +23,7 @@ public class ExitInteractionScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals(ConstLabels.tag_player))
+        if (_dayNightScript._daytime && collision.tag.Equals(ConstLabels.tag_player))
         {
             string sceneName = SceneManager.GetActiveScene().name;
 

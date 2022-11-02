@@ -32,8 +32,6 @@ public class WeaponParent : MonoBehaviour
         _sword = this.transform.GetChild(2).gameObject;
         _gun = this.transform.GetChild(0).gameObject;
         _muzzle = this.transform.GetChild(1).gameObject;
-        _ammo = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo) 
-            * PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo); 
 
         _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_gun_damage) 
             + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee);
@@ -141,13 +139,13 @@ public class WeaponParent : MonoBehaviour
             {
                 health.GetHit(_swordDamage, transform.parent.gameObject);
             }
-            //print("sword hit " + collider.gameObject.tag);
         }
     }
 
     public void ResetAmmo()
     {
         _ammo = ConstLabels.start_ammo * PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo);
+        PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, _ammo);
     }
 
 }

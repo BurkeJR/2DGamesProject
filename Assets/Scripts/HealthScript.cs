@@ -13,9 +13,6 @@ public class HealthScript : MonoBehaviour
 
     ParticleSystem _ps;
 
-    //[SerializeField]
-    //private bool isDead = false;
-
     private void Start()
     {
         _ps = GetComponent<ParticleSystem>();
@@ -25,16 +22,10 @@ public class HealthScript : MonoBehaviour
     {
         currentHealth = healthValue;
         maxHealth = healthValue;
-        //isDead = false;
     }
 
     public void GetHit(int amount, GameObject sender)
     {
-        //if (isDead)
-        //    return;
-        //if (sender.layer == gameObject.layer)
-        //    return;
-
         currentHealth -= amount;
         _ps.Play();
 
@@ -42,34 +33,7 @@ public class HealthScript : MonoBehaviour
         {
             DeadPrep();
         }
-
-        //if (currentHealth > 0)
-        //{
-        //    OnHitWithReference?.Invoke(sender);
-        //}
-        //else
-        //{
-        //    OnDeathWithReference?.Invoke(sender);
-        //    isDead = true;
-        //    Destroy(gameObject);
-        //}
     }
-
-    //private void OnCollisionEnter2D(Collision2D collider)
-    //{
-    //    if (collider.gameObject.tag == "Bullet")
-    //    {
-    //        currentHealth -= 2;
-    //        _ps.Play();
-    //    }
-    //    Debug.Log("Hit");
-    //    if (currentHealth <= 0)
-    //    {
-    //        //isDead = true;
-    //        //Destroy(gameObject);
-    //        DeadPrep();
-    //    }
-    //}
 
     void DeadPrep()
     {
