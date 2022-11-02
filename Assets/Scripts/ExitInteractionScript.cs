@@ -25,23 +25,28 @@ public class ExitInteractionScript : MonoBehaviour
     {
         if (_dayNightScript._daytime && collision.tag.Equals(ConstLabels.tag_player))
         {
-            string sceneName = SceneManager.GetActiveScene().name;
+            SwitchScenes();
+        }
+    }
 
-            PlayerPrefs.SetFloat(ConstLabels.pref_timePassed, _dayNightScript._timePassed);
-            PlayerPrefs.SetFloat(ConstLabels.pref_lastUpdate, _dayNightScript._lastUpdate);
+    public void SwitchScenes()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
 
-            PlayerPrefs.SetFloat(ConstLabels.pref_light_r, _globalLight.color.r);
-            PlayerPrefs.SetFloat(ConstLabels.pref_light_g, _globalLight.color.g);
-            PlayerPrefs.SetFloat(ConstLabels.pref_light_b, _globalLight.color.b);
+        PlayerPrefs.SetFloat(ConstLabels.pref_timePassed, _dayNightScript._timePassed);
+        PlayerPrefs.SetFloat(ConstLabels.pref_lastUpdate, _dayNightScript._lastUpdate);
 
-            if (sceneName == ConstLabels.scene_farm)
-            {
-                SceneManager.LoadScene(ConstLabels.scene_shop);
-            }
-            else if (sceneName == ConstLabels.scene_shop)
-            {
-                SceneManager.LoadScene(ConstLabels.scene_farm);
-            }
+        PlayerPrefs.SetFloat(ConstLabels.pref_light_r, _globalLight.color.r);
+        PlayerPrefs.SetFloat(ConstLabels.pref_light_g, _globalLight.color.g);
+        PlayerPrefs.SetFloat(ConstLabels.pref_light_b, _globalLight.color.b);
+
+        if (sceneName == ConstLabels.scene_farm)
+        {
+            SceneManager.LoadScene(ConstLabels.scene_shop);
+        }
+        else if (sceneName == ConstLabels.scene_shop)
+        {
+            SceneManager.LoadScene(ConstLabels.scene_farm);
         }
     }
 }

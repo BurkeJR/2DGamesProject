@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class ShopInteractionScript : MonoBehaviour
 {
+    public DayNightScript _dnScript;
     public WeaponParent _weapon;
+    public ExitInteractionScript _eiScript;
 
     public GameObject _shopCanvas;
 
@@ -60,6 +63,14 @@ public class ShopInteractionScript : MonoBehaviour
                 _shopCanvas.SetActive(true);
                 PauseGame();
             }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!_dnScript._daytime)
+        {
+            _eiScript.SwitchScenes();
         }
     }
 

@@ -1702,7 +1702,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2049c9d1aa7fd544da8903d9fb67ba48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dnScript: {fileID: 1626868711}
   _weapon: {fileID: 6155330737063824661}
+  _eiScript: {fileID: 1644987358}
   _shopCanvas: {fileID: 295793249}
   _meleeCostText: {fileID: 768082549}
   _gunCostText: {fileID: 125294456}
