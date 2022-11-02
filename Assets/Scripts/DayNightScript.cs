@@ -84,12 +84,12 @@ public class DayNightScript : MonoBehaviour
 
         //if (PlayerPrefs.GetInt(ConstLabels.pref_currentDay) < ((int)(_timePassed / _cycleLength)))
         //{
-            
+
         //}
 
+        _daytime = _timePassed / _cycleLength <= 0.5f;
         if (_lastUpdate > _updateInterval)
         {
-            _daytime = _timePassed / _cycleLength <= 0.5f;
 
             if (_daytime)
             {

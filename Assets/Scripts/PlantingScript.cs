@@ -62,7 +62,7 @@ public class PlantingScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (Input.GetKey(KeyCode.F) && _seedList.Count > 0) {
             if (OnSoil() && Time.time - _lastPlanted > 1)
