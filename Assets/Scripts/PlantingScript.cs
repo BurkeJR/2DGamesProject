@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlantingScript : MonoBehaviour
 {
+    public DayNightScript _dnScript;
+
     public GameObject _player;
+    public Text _gameOver;
 
     public GameObject _CornPrefab;
     public GameObject _EggplantPrefab;
@@ -53,6 +57,8 @@ public class PlantingScript : MonoBehaviour
         eggplantSeeds.text = PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds).ToString();
 
         _lastPlanted = Time.time;
+
+        _gameOver.enabled = false;
     }
 
     // Update is called once per frame
@@ -64,6 +70,22 @@ public class PlantingScript : MonoBehaviour
                 PlantSeed();
             }
         }
+        if (!_dnScript._daytime && _cropList.Count == 0)
+        {
+            HandleLoss();
+        }
+    }
+
+    void HandleLoss()
+    {
+        _gameOver.enabled = true;
+        _player.GetComponent<PlayerScript>().SPEED = 0;
+        Invoke("Restart", 5);
+    }
+
+    void Restart()
+    {
+        SceneManager.LoadScene(ConstLabels.menu_scene);
     }
 
     bool OnSoil()

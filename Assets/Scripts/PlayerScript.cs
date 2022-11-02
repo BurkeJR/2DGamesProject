@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
-    float SPEED;
+    public float SPEED;
     Animator _anim;
     Vector2 _pointerInput, movementInput;
     [SerializeField] private InputActionReference movement, attack, pointerPos;
