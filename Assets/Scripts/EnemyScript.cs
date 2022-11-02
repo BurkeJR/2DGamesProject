@@ -28,24 +28,6 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*foreach(GameObject crop in GameObject.FindGameObjectsWithTag("Crop")){
-            if (crop != null)
-            {
-                if (Vector2.Distance(transform.position, _target.transform.position) > Vector2.Distance(transform.position, crop.transform.position))
-                {
-                    _target = crop;
-                }
-            }
-        }*/
-        /*if (_manager.GetComponent<PlantingScript>()._cropList.Count > _currentCount)
-        {
-            _currentCount = _manager.GetComponent<PlantingScript>()._cropList.Count;
-            if(_currentCount == 1)
-            {
-                _target = _manager.GetComponent<PlantingScript>()._cropList[0];
-            }
-            else
-            {*/
 
         if (GameObject.FindGameObjectWithTag("Crop") != null) {
         distance = Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Crop").transform.position);
@@ -61,6 +43,7 @@ public class EnemyScript : MonoBehaviour
                     this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 transform.position = Vector2.MoveTowards(this.transform.position, GameObject.FindGameObjectWithTag("Crop").transform.position, _speed * Time.deltaTime);
+                
                 _anim.SetFloat("Horizontal", direction.y);
                 _anim.SetFloat("Vertical", direction.x);
                 if (distance > Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Crop").transform.position))
@@ -78,6 +61,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Crop" && _touchedPlant == false)
         {
+            GameObject.FindGameObjectWithTag("Crop").gameObject.tag = "Targeted";
             _touchedPlant = true;
             StartCoroutine(killPlant(collision.gameObject));
         }
@@ -89,7 +73,6 @@ public class EnemyScript : MonoBehaviour
     {
         if (!toDestroy.Equals(null))
         {
-            Debug.Log("bye");
             yield return new WaitForSeconds(7f);
             if (_touchedPlant)
             {
@@ -103,7 +86,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("left");
+        GameObject.FindGameObjectWithTag("Targeted").gameObject.tag = "Crop";
         StopCoroutine(killPlant(other.gameObject));
     }
 }
