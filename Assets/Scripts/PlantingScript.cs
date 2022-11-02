@@ -139,7 +139,19 @@ public class PlantingScript : MonoBehaviour
         var plant = Instantiate(_seedList[_currentSeed], _player.transform.position, Quaternion.identity);
         _cropList.Add(plant);
         _seedList.RemoveAt(_currentSeed);
-        print(_seedList.Count);
         _lastPlanted = Time.time;
+    }
+
+    public void HarvestCrops()
+    {
+        int i = 0;
+        int originalCount = _cropList.Count;
+        while (i < originalCount)
+        {
+            GameObject crop = _cropList[0];
+            _cropList.RemoveAt(0);
+            Destroy(crop);
+            i++;
+        }
     }
 }

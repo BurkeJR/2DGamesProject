@@ -13,6 +13,7 @@ public class DayNightScript : MonoBehaviour
 
     //public WeaponParent _weapon;
     //public bool _ammoReset;
+    public Text dayNumber;
     public Text ammo;
     public Text coins;
 
@@ -65,8 +66,7 @@ public class DayNightScript : MonoBehaviour
 
     private void Update()
     {
-        ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
-        coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
+        
     }
 
     // Update is called once per frame
@@ -77,11 +77,19 @@ public class DayNightScript : MonoBehaviour
         if (_timePassed > _cycleLength)
         {
             _timePassed -= _cycleLength;
+            PlayerPrefs.SetInt(ConstLabels.pref_currentDay, PlayerPrefs.GetInt(ConstLabels.pref_currentDay) + 1);
+            dayNumber.text = "Day " + PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
         }
+
+        //if (PlayerPrefs.GetInt(ConstLabels.pref_currentDay) < ((int)(_timePassed / _cycleLength)))
+        //{
+            
+        //}
 
         if (_lastUpdate > _updateInterval)
         {
             _daytime = _timePassed / _cycleLength <= 0.5f;
+
             if (_daytime)
             {
                 _globalLight.color -= new UnityEngine.Color(_redIncrease, _greenIncrease, _blueIncrease);
@@ -90,6 +98,8 @@ public class DayNightScript : MonoBehaviour
             {
                 _globalLight.color += new UnityEngine.Color(_redIncrease, _greenIncrease, _blueIncrease);
             }
+
+            
 
             _lastUpdate = 0;
 
@@ -100,16 +110,6 @@ public class DayNightScript : MonoBehaviour
             _currentHandRotation += _handRotationIncrement;
             _clockHandTransform.eulerAngles = new Vector3(0, 0, -_currentHandRotation);
         }
-
-        //if (_daytime && _ammoReset)
-        //{
-        //    _weapon.ResetAmmo();
-        //    _ammoReset = false;
-        //}
-        //else if (!_daytime)
-        //{
-        //    _ammoReset = true;
-        //}
     }
 
 }
