@@ -21,8 +21,19 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         _plants = new List<GameObject>();
-        _target = GameObject.FindGameObjectWithTag("Crop");
         _anim = GetComponent<Animator>();
+        foreach (GameObject crop in GameObject.FindGameObjectsWithTag("Crop"))
+        {
+            if(crop.GetComponent<targetedScript>()._objectsTargetting.Count == 0)
+            {
+                _target = crop;
+            }
+            else
+            {
+                //something??
+            }
+        }
+        _target = GameObject.FindGameObjectWithTag("Crop");
     }
 
     // Update is called once per frame
@@ -30,9 +41,9 @@ public class EnemyScript : MonoBehaviour
     {
 
         if (GameObject.FindGameObjectWithTag("Crop") != null) {
-        distance = Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Crop").transform.position);
+                distance = Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Crop").transform.position);
                 Vector2 direction = GameObject.FindGameObjectWithTag("Crop").transform.position - transform.position;
-
+                
 
                 if (direction.x < 0)
                 {
@@ -57,11 +68,15 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    void findNewTarget()
+    {
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Crop" && _touchedPlant == false)
         {
-            GameObject.FindGameObjectWithTag("Crop").gameObject.tag = "Targeted";
             _touchedPlant = true;
             StartCoroutine(killPlant(collision.gameObject));
         }
@@ -78,6 +93,7 @@ public class EnemyScript : MonoBehaviour
             {
                 _touchedPlant = false;
                 _plantScript._cropList.Remove(toDestroy);
+
                 Destroy(toDestroy);
             }
 

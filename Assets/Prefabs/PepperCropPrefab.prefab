@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2338172706984526278}
   - component: {fileID: 7216802661196878990}
   - component: {fileID: -4015403235757329074}
+  - component: {fileID: 7551310646782822045}
   m_Layer: 7
   m_Name: PepperCropPrefab
   m_TagString: Crop
@@ -129,3 +130,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7551310646782822045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056471350704703600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44858e7bb35a4334fa11c06cd7a65961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
