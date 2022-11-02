@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerScript : MonoBehaviour
@@ -32,6 +33,12 @@ public class PlayerScript : MonoBehaviour
         _pointerInput = GetPointerInput();
         
         _WeaponParent.PointerPosition = _pointerInput;
+
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(ConstLabels.menu_scene);
+        }
     }
 
     private void FixedUpdate()

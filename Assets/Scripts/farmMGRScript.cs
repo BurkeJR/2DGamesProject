@@ -20,11 +20,6 @@ public class farmMGRScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(ConstLabels.menu_scene);
-        }
-
         if (currDay < PlayerPrefs.GetInt(ConstLabels.pref_currentDay))
         {
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, PlayerPrefs.GetInt(ConstLabels.pref_player_currency) + (15 * plScript._cropList.Count));
