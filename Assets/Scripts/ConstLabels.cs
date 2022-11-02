@@ -12,6 +12,7 @@ public class ConstLabels
     public const string scene_shop = "ShopScene";
     public const string scene_farm = "FarmScene";
     public const string menu_scene = "MainMenu";
+    public const string scene_end = "EndScene";
 
 
     /* prefs */
