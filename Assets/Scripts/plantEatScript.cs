@@ -21,7 +21,10 @@ public class plantEatScript : MonoBehaviour
     IEnumerator killPlant(GameObject toDestroy)
     {
         new WaitForSeconds(5);
-        Destroy(toDestroy);
+        if (!toDestroy.Equals(null))
+        {
+            Destroy(toDestroy);
+        }
         return null;
     }
 

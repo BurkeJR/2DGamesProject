@@ -677,9 +677,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 2
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -1972,7 +1972,7 @@ GameObject:
   - component: {fileID: 838769398}
   - component: {fileID: 838769397}
   m_Layer: 5
-  m_Name: Bullet
+  m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1994,7 +1994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -101, y: 51.516}
+  m_AnchoredPosition: {x: -155, y: 87}
   m_SizeDelta: {x: 104.08002, y: 103.0319}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &838769397
@@ -2155,7 +2155,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -175}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 112.08, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &981931861
 GameObject:
@@ -2189,10 +2189,10 @@ RectTransform:
   m_Father: {fileID: 410283312}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 336, y: -193}
-  m_SizeDelta: {x: 137.6512, y: 152.8}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -51, y: 87}
+  m_SizeDelta: {x: 178.934, y: 230.2051}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981931863
 MonoBehaviour:
@@ -2674,7 +2674,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -139}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 112.08, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1396186780
 GameObject:
@@ -2792,7 +2792,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -139}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 112.08, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1539641925
 GameObject:
@@ -2979,10 +2979,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globalLight: {fileID: 1807285289}
   _clockHand: {fileID: 6155330737063824660}
-  ammo: {fileID: 838769397}
-  coins: {fileID: 1859220029}
   _weapon: {fileID: 6155330737063824661}
   _ammoReset: 0
+  ammo: {fileID: 838769397}
+  coins: {fileID: 1859220029}
   _daytime: 0
   _timePassed: 0
   _lastUpdate: 0
@@ -3967,7 +3967,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -139}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 112.08, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2059304052
 GameObject:
@@ -4136,7 +4136,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 125}
+  m_SizeDelta: {x: 112.08, y: 125}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2119195097
 MonoBehaviour:

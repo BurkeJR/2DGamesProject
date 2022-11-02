@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 684854182}
   - component: {fileID: 684854184}
   - component: {fileID: 773130110}
+  - component: {fileID: 9074005225149608904}
   m_Layer: 0
   m_Name: PidgeonPrefab
   m_TagString: Enemy
@@ -95,7 +96,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4668304972448072741, guid: dbe69821411a6e34c929cbc3e58ea3a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4939,3 +4940,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _manager: {fileID: 0}
+--- !u!50 &9074005225149608904
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615850879576574353}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 8
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

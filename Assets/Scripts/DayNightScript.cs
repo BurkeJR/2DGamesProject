@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.Rendering.Universal;
+using System.Drawing;
 
 public class DayNightScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class DayNightScript : MonoBehaviour
 
     public WeaponParent _weapon;
     public bool _ammoReset;
+    public Text ammo;
+    public Text coins;
 
     public bool _daytime;
 
@@ -22,12 +25,14 @@ public class DayNightScript : MonoBehaviour
     float _updateInterval = 3;
     public float _lastUpdate;
 
-    Color _dayColor = new Color(1.0f, 1.0f, 1.0f);
-    Color _nightColor = new Color(0.5f, 0.5f, 0.8f);
+    UnityEngine.Color _dayColor = new UnityEngine.Color(1.0f, 1.0f, 1.0f);
+    UnityEngine.Color _nightColor = new UnityEngine.Color(0.5f, 0.5f, 0.8f);
 
     float _redIncrease;
     float _greenIncrease;
     float _blueIncrease;
+
+
 
     Transform _clockHandTransform;
     float _currentHandRotation;
@@ -40,7 +45,7 @@ public class DayNightScript : MonoBehaviour
     {
         _timePassed = PlayerPrefs.GetFloat(ConstLabels.pref_timePassed);
         _lastUpdate = PlayerPrefs.GetFloat(ConstLabels.pref_lastUpdate);
-        _globalLight.color = new Color(PlayerPrefs.GetFloat(ConstLabels.pref_light_r), 
+        _globalLight.color = new UnityEngine.Color(PlayerPrefs.GetFloat(ConstLabels.pref_light_r), 
             PlayerPrefs.GetFloat(ConstLabels.pref_light_g),
             PlayerPrefs.GetFloat(ConstLabels.pref_light_b));
 
@@ -58,6 +63,12 @@ public class DayNightScript : MonoBehaviour
         _clockHandTransform.eulerAngles = new Vector3(0, 0, -_currentHandRotation);
     }
 
+    private void Update()
+    {
+        ammo.text = PlayerPrefs.GetInt(ConstLabels.pref_player_ammo).ToString();
+        coins.text = PlayerPrefs.GetInt(ConstLabels.pref_player_currency).ToString();
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -73,11 +84,11 @@ public class DayNightScript : MonoBehaviour
             _daytime = _timePassed / _cycleLength <= 0.5f;
             if (_daytime)
             {
-                _globalLight.color -= new Color(_redIncrease, _greenIncrease, _blueIncrease);
+                _globalLight.color -= new UnityEngine.Color(_redIncrease, _greenIncrease, _blueIncrease);
             }
             else
             {
-                _globalLight.color += new Color(_redIncrease, _greenIncrease, _blueIncrease);
+                _globalLight.color += new UnityEngine.Color(_redIncrease, _greenIncrease, _blueIncrease);
             }
 
             _lastUpdate = 0;

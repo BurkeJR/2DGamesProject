@@ -103,7 +103,9 @@ public class WeaponParent : MonoBehaviour
         }
         else 
         {
-            if(_ammo > 0) {
+            print(_ammo);
+            if (_ammo > 0)
+            {
                 _ganimator.SetTrigger("Attack");
                 _attackBlocked = true;
                 GameObject clone = Instantiate(_bulletPrefab, transform.GetChild(1).transform.position, transform.rotation);
@@ -112,7 +114,7 @@ public class WeaponParent : MonoBehaviour
                 PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, _ammo);
                 StartCoroutine(DelayAttack(_gunDelay));
             }
-            
+
         }
         
     }

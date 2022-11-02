@@ -45,4 +45,5 @@ public class ConstLabels
 
     /* ints */
     public const int start_ammo = 7;
+
 }
