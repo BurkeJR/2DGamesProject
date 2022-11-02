@@ -287,7 +287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -905.59, y: 450.05}
+  m_AnchoredPosition: {x: -905.59, y: 389.62}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &100991520
@@ -1885,6 +1885,14 @@ PrefabInstance:
       propertyPath: _dnScript
       value: 
       objectReference: {fileID: 26504381}
+    - target: {fileID: 2862934782209185295, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3317767933232354608, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6155330737357479220, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
