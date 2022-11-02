@@ -44,8 +44,6 @@ public class PlantingScript : MonoBehaviour
         _currentSeed = 0;
 
         _lastPlanted = Time.time;
-
-        _gameOver.enabled = false;
     }
 
     // Update is called once per frame
@@ -63,16 +61,11 @@ public class PlantingScript : MonoBehaviour
         }
     }
 
+    
+
     void HandleLoss()
     {
-        _gameOver.enabled = true;
-        _player.GetComponent<PlayerScript>().SPEED = 0;
-        Invoke("Restart", 5);
-    }
-
-    void Restart()
-    {
-        SceneManager.LoadScene(ConstLabels.menu_scene);
+        SceneManager.LoadScene(ConstLabels.scene_end);
     }
 
     bool OnSoil()
