@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour
 {
+    public PlantingScript _plantScript;
+
     GameObject _target;
     public float _speed;
     public GameObject _manager;
@@ -92,6 +94,7 @@ public class EnemyScript : MonoBehaviour
             if (_touchedPlant)
             {
                 _touchedPlant = false;
+                _plantScript._cropList.Remove(toDestroy);
                 Destroy(toDestroy);
             }
 

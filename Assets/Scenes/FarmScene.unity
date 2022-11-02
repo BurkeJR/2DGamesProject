@@ -171,8 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globalLight: {fileID: 2011625239}
   _clockHand: {fileID: 772923012}
-  _weapon: {fileID: 703563403}
-  _ammoReset: 0
+  dayNumber: {fileID: 0}
   ammo: {fileID: 584011587}
   coins: {fileID: 2075861179}
   _daytime: 0
@@ -190,7 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a6dd5ee7544094782034635dad4192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dnScript: {fileID: 26504381}
   _player: {fileID: 1135694893}
+  _gameOver: {fileID: 883280395}
   _CornPrefab: {fileID: 1466562642312495317, guid: e418c5a80b0536d48adb2682eacc2c96, type: 3}
   _EggplantPrefab: {fileID: 8809122414674844400, guid: cc8914958a064064fbe780af4eac53c8, type: 3}
   _CarrotPrefab: {fileID: 679349394153474213, guid: 4c69d660822f50a46a04c4c6acfa7a1f, type: 3}
@@ -216,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammo: {fileID: 584011587}
   coins: {fileID: 2075861179}
+  plScript: {fileID: 0}
 --- !u!114 &26504384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec8130d6c61b04da3fa919eddc2ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _plantScript: {fileID: 26504382}
   _pigeonPrefab: {fileID: 8615850879576574353, guid: ba4833f1b2b1014488210393d78b37dc, type: 3}
   _wolfPrefab: {fileID: 987764828115703628, guid: 6bf604158b1980d4ca8d1cd36fab31d8, type: 3}
   _snakePrefab: {fileID: 4906774225671593816, guid: 426b38d4a0828d948b113fbf7412beba, type: 3}
@@ -728,17 +731,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584011585}
   m_CullTransparentMesh: 1
---- !u!114 &703563403 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2064846346, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
-  m_PrefabInstance: {fileID: 1247903931}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9d3054b5e283548ad9eb4a5086e601, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &722758317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1060,6 +1052,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &883280393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883280394}
+  - component: {fileID: 883280396}
+  - component: {fileID: 883280395}
+  m_Layer: 5
+  m_Name: GameOver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &883280394
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883280393}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1050813467}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 810.96, y: 148.171}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &883280395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883280393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 130
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 150
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: GAME OVER
+--- !u!222 &883280396
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883280393}
+  m_CullTransparentMesh: 1
 --- !u!1001 &899344119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1160,7 +1231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.000061035156, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: -2.5, y: -0.5}
 --- !u!114 &899957255
@@ -1287,6 +1358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1937150301, guid: 6bf604158b1980d4ca8d1cd36fab31d8, type: 3}
+      propertyPath: _plantScript
+      value: 
+      objectReference: {fileID: 26504382}
     - target: {fileID: 987764828115703625, guid: 6bf604158b1980d4ca8d1cd36fab31d8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1608,6 +1683,7 @@ RectTransform:
   - {fileID: 1680666741}
   - {fileID: 899957254}
   - {fileID: 1420890488}
+  - {fileID: 883280394}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

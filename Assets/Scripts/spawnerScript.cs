@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class spawnerScript : MonoBehaviour
 {
+    public PlantingScript _plantScript;
+
     public GameObject _pigeonPrefab;
     public GameObject _wolfPrefab;
     public GameObject _snakePrefab;
@@ -37,6 +39,7 @@ public class spawnerScript : MonoBehaviour
         Vector2 pos = new Vector2(x, y);
         GameObject clone = Instantiate(toSpawn, pos, Quaternion.identity);
         clone.GetComponent<EnemyScript>()._manager = this.gameObject;
+        clone.GetComponent<EnemyScript>()._plantScript = _plantScript;
         return nightNum;
     }
 
