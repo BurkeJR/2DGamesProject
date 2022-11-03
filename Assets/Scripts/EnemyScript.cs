@@ -101,8 +101,6 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-
-    System.Random rnd = new System.Random();
     IEnumerator killPlant(GameObject toDestroy)
     {
         if (!toDestroy.Equals(null))
