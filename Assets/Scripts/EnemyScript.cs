@@ -19,7 +19,6 @@ public class EnemyScript : MonoBehaviour
     bool _touchedPlant = false;
     List<GameObject> _plants;
 
-    private float distance;
 
     bool _eating;
     float _eatTimer;
@@ -86,7 +85,7 @@ public class EnemyScript : MonoBehaviour
             _anim.SetFloat("Horizontal", direction.y);
             _anim.SetFloat("Vertical", direction.x);
 
-            if (distance > Vector2.Distance(_transform.position, targetPos))
+            if (dist > Vector2.Distance(_transform.position, targetPos))
             {
                 _anim.SetFloat("Speed", 1);
             }
