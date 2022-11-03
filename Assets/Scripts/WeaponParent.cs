@@ -48,7 +48,7 @@ public class WeaponParent : MonoBehaviour
 
         if (_gunDamage == 0)
         {
-            _gunDamage = 2;
+            _gunDamage = 4;
         }
         if (_swordDamage == 0)
         {

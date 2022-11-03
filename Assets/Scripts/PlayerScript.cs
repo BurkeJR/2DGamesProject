@@ -34,11 +34,6 @@ public class PlayerScript : MonoBehaviour
         
         _WeaponParent.PointerPosition = _pointerInput;
 
-
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(ConstLabels.menu_scene);
-        }
     }
 
     private void FixedUpdate()
