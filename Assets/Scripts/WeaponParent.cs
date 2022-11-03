@@ -39,6 +39,8 @@ public class WeaponParent : MonoBehaviour
         _gun = this.transform.GetChild(0).gameObject;
         _muzzle = this.transform.GetChild(1).gameObject;
 
+        ResetAmmo();
+
         _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_gun_damage) 
             + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee);
         _swordDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_melee_damage)
