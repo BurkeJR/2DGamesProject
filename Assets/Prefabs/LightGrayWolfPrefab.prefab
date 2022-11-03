@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1937150302}
   m_Layer: 0
   m_Name: LightGrayWolfPrefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4939,6 +4939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659d86daae176614d83d3ba31921bec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _plantScript: {fileID: 0}
+  farmMGRScript: {fileID: 0}
   _speed: 1.8
   _manager: {fileID: 0}
 --- !u!114 &1937150302
@@ -4953,8 +4955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390b8161bb4dfe345ad12f829c7f1373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
+  currentHealth: 4
+  maxHealth: 4
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls: []

@@ -24,11 +24,17 @@ public class WeaponParent : MonoBehaviour
     public Transform _origin;
     public float radius;
 
+    public AudioClip _slash;
+    public AudioClip _shotgun;
+    AudioSource _as;
+
     int _gunDamage;
     int _swordDamage;
 
     private void Start()
     {
+        _as = GetComponent<AudioSource>();
+
         _sword = this.transform.GetChild(2).gameObject;
         _gun = this.transform.GetChild(0).gameObject;
         _muzzle = this.transform.GetChild(1).gameObject;
@@ -95,6 +101,7 @@ public class WeaponParent : MonoBehaviour
         }
         if (_swordOut)
         {
+            _as.PlayOneShot(_slash);
             _sanimator.SetTrigger("Attack");
             _attackBlocked = true;
             StartCoroutine(DelayAttack(_swordDelay));
@@ -104,6 +111,7 @@ public class WeaponParent : MonoBehaviour
             print(_ammo);
             if (_ammo > 0)
             {
+                _as.PlayOneShot(_shotgun);
                 _ganimator.SetTrigger("Attack");
                 _attackBlocked = true;
                 GameObject clone = Instantiate(_bulletPrefab, transform.GetChild(1).transform.position, transform.rotation);
