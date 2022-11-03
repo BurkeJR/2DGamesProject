@@ -5,49 +5,82 @@ using UnityEngine;
 public class spawnerScript : MonoBehaviour
 {
     public PlantingScript _plantScript;
+    public DayNightScript _dnScript;
 
     public GameObject _pigeonPrefab;
     public GameObject _wolfPrefab;
     public GameObject _snakePrefab;
     public GameObject _sheepPrefab;
     public GameObject _bearPrefab;
-    int nightNum;
-    int nightMult;
+
+    System.Random _random;
+
+    int _nightNum;
+    int _spawnedTonight;
+    bool _hasClearedBoard;
+
     // Start is called before the first frame update
     void Start()
     {
-        nightNum = PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
-        nightMult = 0;
-        Debug.Log(nightNum);
+        _nightNum = PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
+        _spawnedTonight = 0;
+        _random = new System.Random();
+
+        Debug.Log("night num:" + _nightNum);
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = nightMult; i < nightNum; i++)
+        if ((!_dnScript._daytime) && (_spawnedTonight < (_nightNum * 2) + 15) && (_random.Next(0, 330) == 0)) 
         {
-            StartCoroutine(runSpawn(_snakePrefab));
-            nightMult++;
+            int r = _random.Next(0, 100);
+            if (r < 4)
+            {
+                runSpawn(_bearPrefab);
+            }
+            else if (r < 25)
+            {
+                runSpawn(_sheepPrefab);
+            }
+            else if (r < 45)
+            {
+                runSpawn(_wolfPrefab);
+            }
+            else if (r < 75)
+            {
+                runSpawn(_pigeonPrefab);
+            }
+            else
+            {
+                runSpawn(_snakePrefab);
+            }
+            _spawnedTonight++;
+        }
+        if (_dnScript._daytime && !_hasClearedBoard)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag(ConstLabels.tag_enemy);
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                Destroy(enemies[i]);
+            }
+            _hasClearedBoard = true;
         }
     }
 
-    private int spawnEnemy(GameObject toSpawn, float x, float y)
+    void spawnEnemy(GameObject toSpawn, float x, float y)
     {
-        System.Random rand = new System.Random();
         Vector2 pos = new Vector2(x, y);
         GameObject clone = Instantiate(toSpawn, pos, Quaternion.identity);
-        clone.GetComponent<EnemyScript>()._manager = this.gameObject;
+        clone.GetComponent<EnemyScript>()._manager = gameObject;
         clone.GetComponent<EnemyScript>()._plantScript = _plantScript;
-        return nightNum;
     }
 
-    IEnumerator runSpawn(GameObject toSpawn)
+    void runSpawn(GameObject toSpawn)
     {
-       System.Random rand = new System.Random();
-        float wait = rand.Next(1, 5);
-        float x = rand.Next(-9, 19);
-        float y = rand.Next(-21, -3);
-        yield return new WaitForSeconds(wait);
+        float wait = _random.Next(1, 5);
+        float x = _random.Next(-9, 19);
+        float y = _random.Next(-21, -3);
         spawnEnemy(toSpawn, x, y);
     }
 }

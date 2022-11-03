@@ -4940,8 +4940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plantScript: {fileID: 0}
-  farmMGRScript: {fileID: 0}
-  _speed: 1
+  _speed: 1.5
   _manager: {fileID: 0}
 --- !u!114 &1695281695
 MonoBehaviour:
