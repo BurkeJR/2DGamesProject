@@ -32,10 +32,10 @@ public class spawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((!_dnScript._daytime) && (_spawnedTonight < (_nightNum * 2) + 15) && (_random.Next(0, 330) == 0)) 
+        if ((!_dnScript._daytime) && (_spawnedTonight < (_nightNum * 2) + 15) && (_random.Next(0, 320) == 0)) 
         {
             int r = _random.Next(0, 100);
-            if (r < 4)
+            if (r < 5)
             {
                 runSpawn(_bearPrefab);
             }
