@@ -34,6 +34,7 @@ public class ShopInteractionScript : MonoBehaviour
 
     private void Start()
     {
+        _as = GetComponent<AudioSource>();
         _spriteOn = false;
         _shopOpen = false;
         _shopCanvas.SetActive(false);
