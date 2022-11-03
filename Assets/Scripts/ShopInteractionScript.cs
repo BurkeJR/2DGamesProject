@@ -29,6 +29,9 @@ public class ShopInteractionScript : MonoBehaviour
     int _playerCurrency;
     int _upgradeCost = 100;
 
+    AudioSource _as;
+    public AudioClip _menuClick;
+
     private void Start()
     {
         _spriteOn = false;
@@ -138,6 +141,7 @@ public class ShopInteractionScript : MonoBehaviour
     {
         if (_upgradeCost < _playerCurrency)
         {
+            _as.PlayOneShot(_menuClick);
             _playerCurrency -= _upgradeCost;
             PlayerPrefs.SetInt(ConstLabels.pref_upgrade_melee, 1);
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
@@ -149,6 +153,7 @@ public class ShopInteractionScript : MonoBehaviour
     {
         if (_upgradeCost < _playerCurrency)
         {
+            _as.PlayOneShot(_menuClick);
             _playerCurrency -= _upgradeCost;
             PlayerPrefs.SetInt(ConstLabels.pref_upgrade_gun, 1);
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
@@ -160,6 +165,7 @@ public class ShopInteractionScript : MonoBehaviour
     {
         if (_upgradeCost < _playerCurrency)
         {
+            _as.PlayOneShot(_menuClick);
             _playerCurrency -= _upgradeCost;
             PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 2);
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
@@ -172,6 +178,7 @@ public class ShopInteractionScript : MonoBehaviour
     {
         if (_upgradeCost < _playerCurrency)
         {
+            _as.PlayOneShot(_menuClick);
             _playerCurrency -= _upgradeCost;
             PlayerPrefs.SetInt(ConstLabels.pref_upgrade_speed, 1);
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);

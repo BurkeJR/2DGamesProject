@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659d86daae176614d83d3ba31921bec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _plantScript: {fileID: 0}
+  farmMGRScript: {fileID: 0}
   _speed: 1
   _manager: {fileID: 0}
 --- !u!61 &2039912644281214818

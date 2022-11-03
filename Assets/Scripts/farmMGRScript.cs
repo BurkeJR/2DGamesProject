@@ -8,12 +8,16 @@ public class farmMGRScript : MonoBehaviour
 {
 
     public PlantingScript plScript;
-
     int currDay;
+
+    AudioSource _as;
+    public AudioClip _eating;
+    public AudioClip _death;
 
     // Start is called before the first frame update
     void Start()
     {
+        _as = GetComponent<AudioSource>();
         currDay = PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
     }
 
@@ -27,4 +31,16 @@ public class farmMGRScript : MonoBehaviour
             currDay++;
         }
     }
+
+    public void PlayEatingSound()
+    {
+        _as.PlayOneShot(_eating);
+    }
+
+    public void PlayDeathSound()
+    {
+        _as.PlayOneShot(_death);
+    }
+
+    
 }

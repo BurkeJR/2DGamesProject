@@ -5,18 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+
+    AudioSource _as;
+    public AudioClip _menuClick;
+
     private void Start()
     {
+        _as = GetComponent<AudioSource>(); 
         LoadDefaultGlobals();
     }
 
     public void ChangeScenByName(string name)
     {
+        _as.PlayOneShot(_menuClick);
         SceneManager.LoadScene(name);
     }
    
     public void Quit()
     {
+        _as.PlayOneShot(_menuClick);
         Application.Quit();
     }
 

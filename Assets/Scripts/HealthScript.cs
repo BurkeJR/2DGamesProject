@@ -13,9 +13,12 @@ public class HealthScript : MonoBehaviour
 
     ParticleSystem _ps;
 
+    public farmMGRScript _mgrScript;
+
     private void Start()
     {
         _ps = GetComponent<ParticleSystem>();
+        _mgrScript = FindObjectOfType<farmMGRScript>();
     }
 
     public void InitializeHealth(int healthValue)
@@ -37,6 +40,8 @@ public class HealthScript : MonoBehaviour
 
     void DeadPrep()
     {
+        // play death sound
+        _mgrScript.PlayDeathSound();
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
         Invoke("MakeDead", 1);

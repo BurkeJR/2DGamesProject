@@ -19,8 +19,12 @@ public class PlantingScript : MonoBehaviour
     public GameObject _PepperPrefab;
     public GameObject _BeanPrefab;
 
+    public AudioClip _gainCoins;
+    public AudioClip _plantCrop;
+
     int _currentSeed;
     float _lastPlanted;
+    AudioSource _as;
 
     // list of crop objects
     List<GameObject> _seedList;
@@ -32,6 +36,8 @@ public class PlantingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _as = GetComponent<AudioSource>();
+
         _cropList = new List<GameObject>();
         _seedList = new List<GameObject>();
 
@@ -53,6 +59,7 @@ public class PlantingScript : MonoBehaviour
             if (OnSoil() && Time.time - _lastPlanted > 1)
             {
                 PlantSeed();
+                
             }
         }
         if (!_dnScript._daytime && _cropList.Count == 0)
@@ -131,6 +138,7 @@ public class PlantingScript : MonoBehaviour
         var plant = Instantiate(_seedList[_currentSeed], _player.transform.position, Quaternion.identity);
         _cropList.Add(plant);
         _seedList.RemoveAt(_currentSeed);
+        _as.PlayOneShot(_plantCrop);
         _lastPlanted = Time.time;
     }
 
@@ -145,5 +153,6 @@ public class PlantingScript : MonoBehaviour
             Destroy(crop);
             i++;
         }
+        _as.PlayOneShot(_gainCoins);
     }
 }

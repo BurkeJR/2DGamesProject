@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements.Experimental;
 
 public class EnemyScript : MonoBehaviour
 {
     public PlantingScript _plantScript;
+    public farmMGRScript farmMGRScript;
 
     GameObject _target;
     public float _speed;
@@ -19,12 +21,20 @@ public class EnemyScript : MonoBehaviour
 
     private float distance;
 
+    bool _eating;
+    float _eatTimer;
+
     // Start is called before the first frame update
     void Start()
     {
         _transform = transform;
         UpdateTarget();
+        farmMGRScript = FindObjectOfType<farmMGRScript>();
+        _plantScript = FindObjectOfType<PlantingScript>();
+        _plants = new List<GameObject>();
         _anim = GetComponent<Animator>();
+        _eating = false;
+        _eatTimer = Time.time;
     }
 
     void UpdateTarget()
@@ -90,6 +100,13 @@ public class EnemyScript : MonoBehaviour
             // if we get here then game over (this is used for testing)
             UpdateTarget();
         }
+
+        if (_eating && Time.time - _eatTimer > 2)
+        {
+            // play eating sound
+            farmMGRScript.PlayEatingSound();
+            _eatTimer = Time.time;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -97,6 +114,8 @@ public class EnemyScript : MonoBehaviour
         if (collision.gameObject.tag == "Crop" && _touchedPlant == false)
         {
             _touchedPlant = true;
+            _eating = true;
+            
             StartCoroutine(killPlant(collision.gameObject));
         }
     }
@@ -105,6 +124,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (!toDestroy.Equals(null))
         {
+            
             yield return new WaitForSeconds(7f);
             if (_touchedPlant)
             {
@@ -113,7 +133,7 @@ public class EnemyScript : MonoBehaviour
                 // get list of targetting animals and retarget them here
                 Destroy(toDestroy);
             }
-
+            _eating = false;
         }
     }
 
