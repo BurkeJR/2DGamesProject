@@ -11,7 +11,6 @@ public class PlantingScript : MonoBehaviour
     public DayNightScript _dnScript;
 
     public GameObject _player;
-    public Text _gameOver;
 
     public GameObject _CornPrefab;
     public GameObject _EggplantPrefab;
