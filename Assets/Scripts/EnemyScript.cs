@@ -65,11 +65,9 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Animator>().Rebind();
         if (_target != null)
         {
             Vector3 targetPos = _target.transform.position;
-            distance = Vector2.Distance(_transform.position, targetPos);
 
             float dist = Vector2.Distance(_transform.position, targetPos);
             Vector2 direction = targetPos - _transform.position;
