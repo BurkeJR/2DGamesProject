@@ -17,7 +17,7 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeScenByName(string name)
     {
-        _as.PlayOneShot(_menuClick);
+        /*_as.PlayOneShot(_menuClick);*/
         SceneManager.LoadScene(name);
     }
    

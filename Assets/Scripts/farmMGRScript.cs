@@ -13,6 +13,7 @@ public class farmMGRScript : MonoBehaviour
     AudioSource _as;
     public AudioClip _eating;
     public AudioClip _death;
+    public Text _earned;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,8 @@ public class farmMGRScript : MonoBehaviour
     void Update()
     {
         if (currDay < PlayerPrefs.GetInt(ConstLabels.pref_currentDay))
-        {
+        {   
+            _earned.text = "+" + 15 * plScript._cropList.Count;
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, PlayerPrefs.GetInt(ConstLabels.pref_player_currency) + (15 * plScript._cropList.Count));
             plScript.HarvestCrops();
             currDay++;
