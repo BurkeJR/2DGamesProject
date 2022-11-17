@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,7 +22,9 @@ public class PlantingScript : MonoBehaviour
     public AudioClip _gainCoins;
     public AudioClip _plantCrop;
 
+    Dictionary<int, String> _seedDict = new Dictionary<int, String>();
     int _currentSeed;
+    int _maxSeedInd;
     float _lastPlanted;
     AudioSource _as;
 
@@ -38,29 +41,54 @@ public class PlantingScript : MonoBehaviour
         _as = GetComponent<AudioSource>();
 
         _cropList = new List<GameObject>();
-        _seedList = new List<GameObject>();
 
-        AddSeed(_CornPrefab);
-        AddSeed(_EggplantPrefab);
-        AddSeed(_CarrotPrefab);
-        AddSeed(_PepperPrefab);
-        AddSeed(_BeanPrefab);
+        PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) + 1);
+        PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) + 1);
+        PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds) + 1);
+        PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds) + 1);
+        PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds) + 1);
+
+
+        _seedDict.Add(0, ConstLabels.pref_corn_seeds);
+        _seedDict.Add(1, ConstLabels.pref_bean_seeds);
+        _seedDict.Add(2, ConstLabels.pref_carrot_seeds);
+        _seedDict.Add(3, ConstLabels.pref_pepper_seeds);
+        _seedDict.Add(4, ConstLabels.pref_eggplant_seeds);
 
         _currentSeed = 0;
+        _maxSeedInd = 4;
 
         _lastPlanted = Time.time;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && PlayerPrefs.GetInt(_seedDict[_currentSeed]) > 0)
+        {
+            if (OnSoil() && AwayFromPlants())
+            {
+                PlantSeed();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (_currentSeed < _maxSeedInd)
+            {
+                _currentSeed += 1;
+            }
+            else
+            {
+                _currentSeed = 0;
+            }
+
+        }
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Input.GetKey(KeyCode.F) && _seedList.Count > 0) {
-            if (OnSoil() && Time.time - _lastPlanted > 1)
-            {
-                PlantSeed();
-                
-            }
-        }
+
         if (!_dnScript._daytime && _cropList.Count == 0)
         {
             HandleLoss();
@@ -79,64 +107,72 @@ public class PlantingScript : MonoBehaviour
         return true;
     }
 
+    bool AwayFromPlants()
+    {
+        return true;
+    }
+
+    /*
     void AddSeed(GameObject plantPrefab)
     {
         if (plantPrefab == _CornPrefab)
         {
-            _seedList.Add(plantPrefab);
             PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, 1);
 
         } else if (plantPrefab == _BeanPrefab)
         {
-            _seedList.Add(plantPrefab);
             PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, 1);
 
         }
         else if (plantPrefab == _PepperPrefab)
         {
-            _seedList.Add(plantPrefab);
             PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, 1);
 
         }
         else if (plantPrefab == _EggplantPrefab)
         {
-            _seedList.Add(plantPrefab);
             PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, 1);
 
         }
         else if (plantPrefab == _CarrotPrefab)
         {
-            _seedList.Add(plantPrefab);
             PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, 1);
-            
         }
-    }
+    } 
+    */
 
     void PlantSeed()
     {
-        if (_seedList[_currentSeed] == _CornPrefab)
+        if (_currentSeed == 0 && PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) > 0)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) - 1);
+            var plant = Instantiate(_CornPrefab, _player.transform.position, Quaternion.identity);
+            _cropList.Add(plant);
         }
-        else if (_seedList[_currentSeed] == _CarrotPrefab)
-        {
-            PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) - 1);
-        }
-        else if (_seedList[_currentSeed] == _BeanPrefab)
+        else if (_currentSeed == 1 && PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds) > 0)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds) - 1);
+            var plant = Instantiate(_BeanPrefab, _player.transform.position, Quaternion.identity);
+            _cropList.Add(plant);
         }
-        else if (_seedList[_currentSeed] == _PepperPrefab)
+        else if (_currentSeed == 2 && PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) > 0)
+        {
+            PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) - 1);
+            var plant = Instantiate(_CarrotPrefab, _player.transform.position, Quaternion.identity);
+            _cropList.Add(plant);
+        }
+        else if (_currentSeed == 3 && PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds) > 0)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds) - 1);
+            var plant = Instantiate(_PepperPrefab, _player.transform.position, Quaternion.identity);
+            _cropList.Add(plant);
         }
-        else if (_seedList[_currentSeed] == _EggplantPrefab)
+        else if (_currentSeed == 4 && PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds) > 0)
         {
             PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds) - 1);
+            var plant = Instantiate(_EggplantPrefab, _player.transform.position, Quaternion.identity);
+            _cropList.Add(plant);
         }
-        var plant = Instantiate(_seedList[_currentSeed], _player.transform.position, Quaternion.identity);
-        _cropList.Add(plant);
-        _seedList.RemoveAt(_currentSeed);
         _as.PlayOneShot(_plantCrop);
         _lastPlanted = Time.time;
     }

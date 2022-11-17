@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class targetedScript : MonoBehaviour
 {
-    public List<GameObject> _objectsTargetting;
+    // public List<GameObject> _objectsTargetting;
+    
     // Start is called before the first frame update
     void Start()
     {
-        _objectsTargetting = new List<GameObject>();
+        // _objectsTargetting = new List<GameObject>();
     }
 
     // Update is called once per frame
