@@ -47,9 +47,9 @@ public class DayNightScript : MonoBehaviour
         _daytime = _timePassed / _cycleLength <= 0.5f;
 
         _incrementScale = _cycleLength / _updateInterval / 2;
-        _redIncrease = (_dayColor.r - _nightColor.r) / _incrementScale;
-        _greenIncrease = (_dayColor.g - _nightColor.g) / _incrementScale;
-        _blueIncrease = (_dayColor.b - _nightColor.b) / _incrementScale;
+        _redIncrease = (_dayColor.r - _nightColor.r) / _incrementScale * 2;
+        _greenIncrease = (_dayColor.g - _nightColor.g) / _incrementScale * 2;
+        _blueIncrease = (_dayColor.b - _nightColor.b) / _incrementScale * 2;
 
         _clockHandTransform = _clockHand.transform;
         _handRotationIncrement = 180 / _incrementScale;
@@ -78,16 +78,17 @@ public class DayNightScript : MonoBehaviour
         //{
 
         //}
+        float timeRatio = _timePassed / _cycleLength;
 
-        _daytime = _timePassed / _cycleLength <= 0.5f;
+        _daytime = timeRatio <= 0.5f;
         if (_lastUpdate > _updateInterval)
         {
 
-            if (_daytime)
+            if (timeRatio >= 0.25f && timeRatio <= 0.5f)
             {
                 _globalLight.color -= new UnityEngine.Color(_redIncrease, _greenIncrease, _blueIncrease);
             }
-            else
+            else if (timeRatio >= 0.75f && timeRatio <= 1.0f)
             {
                 _globalLight.color += new UnityEngine.Color(_redIncrease, _greenIncrease, _blueIncrease);
             }
