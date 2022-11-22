@@ -58,40 +58,43 @@ public class WeaponParent : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "ShopScene")
+        if(!pauseMenuScript._GameIsPaused)
         {
-            _swordOut = false;
-        }
-        else if (Input.GetKey(KeyCode.Alpha2) || SceneManager.GetActiveScene().name == "ShopScene")
-        {
-            _swordOut = true;
-        }
+            if (Input.GetKey(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "ShopScene")
+            {
+                _swordOut = false;
+            }
+            else if (Input.GetKey(KeyCode.Alpha2) || SceneManager.GetActiveScene().name == "ShopScene")
+            {
+                _swordOut = true;
+            }
 
-        Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
-        transform.right = direction;
+            Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
+            transform.right = direction;
 
-        Vector2 scale = transform.localScale;
-        if (direction.x < 0)
-        {
-            scale.y = 1;
-        }
-        else if (direction.x > 0)
-        {
-            scale.y = -1;
-        }
-        transform.localScale = scale;
+            Vector2 scale = transform.localScale;
+            if (direction.x < 0)
+            {
+                scale.y = 1;
+            }
+            else if (direction.x > 0)
+            {
+                scale.y = -1;
+            }
+            transform.localScale = scale;
 
-        if(_swordOut)
-        {
-            _sword.SetActive(true);
-            _muzzle.SetActive(false);
-            _gun.SetActive(false);
-        }
-        else if(!_swordOut && SceneManager.GetActiveScene().name != "ShopScene")
-        {
-            _sword.SetActive(false);
-            _muzzle.SetActive(true);
-            _gun.SetActive(true);
+            if (_swordOut)
+            {
+                _sword.SetActive(true);
+                _muzzle.SetActive(false);
+                _gun.SetActive(false);
+            }
+            else if (!_swordOut && SceneManager.GetActiveScene().name != "ShopScene")
+            {
+                _sword.SetActive(false);
+                _muzzle.SetActive(true);
+                _gun.SetActive(true);
+            }
         }
     }
 

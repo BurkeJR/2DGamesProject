@@ -20,14 +20,15 @@ public class farmMGRScript : MonoBehaviour
     {
         _as = GetComponent<AudioSource>();
         currDay = PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
+        _earned.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (currDay < PlayerPrefs.GetInt(ConstLabels.pref_currentDay))
-        {   
-            _earned.text = "+" + 15 * plScript._cropList.Count;
+        {
+            StartCoroutine(earned());
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, PlayerPrefs.GetInt(ConstLabels.pref_player_currency) + (15 * plScript._cropList.Count));
             plScript.HarvestCrops();
             currDay++;
@@ -42,6 +43,16 @@ public class farmMGRScript : MonoBehaviour
     public void PlayDeathSound()
     {
         _as.PlayOneShot(_death);
+    }
+
+    IEnumerator earned()
+    {
+        _earned.text = "+" + 15 * plScript._cropList.Count;
+        _earned.enabled = true;
+        _earned.GetComponent<Animator>().SetBool("money", true);
+        yield return new WaitForSeconds(3);
+        _earned.GetComponent<Animator>().SetBool("money", false);
+        _earned.enabled = false;
     }
 
     
