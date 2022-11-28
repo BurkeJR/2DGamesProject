@@ -5,6 +5,7 @@ using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class PlantingScript : MonoBehaviour
@@ -18,6 +19,9 @@ public class PlantingScript : MonoBehaviour
     public GameObject _CarrotPrefab;
     public GameObject _PepperPrefab;
     public GameObject _BeanPrefab;
+
+    public Tilemap _tMap;
+    public Tile _dirtTile;
 
     public AudioClip _gainCoins;
     public AudioClip _plantCrop;
@@ -105,6 +109,20 @@ public class PlantingScript : MonoBehaviour
     bool OnSoil()
     {
         return true;
+        /*
+        var tile = _tMap.GetTile(new Vector3Int((int)Math.Round(_player.transform.position.x, 0), (int)Math.Round(_player.transform.position.y, 0), (int)Math.Round(_player.transform.position.z, 0)));
+
+        if (tile == _dirtTile)
+        {
+            return true;
+
+        }
+        else
+        {
+            return false;
+            print("not in dirt");
+        }
+        */
     }
 
     bool AwayFromPlants()
