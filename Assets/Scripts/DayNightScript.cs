@@ -9,6 +9,7 @@ using System.Drawing;
 public class DayNightScript : MonoBehaviour
 {
     public Light2D _globalLight;
+    public GameObject _lamp;
     public GameObject _clockHand;
 
     public bool _daytime;
@@ -21,7 +22,7 @@ public class DayNightScript : MonoBehaviour
     public float _lastUpdate;
 
     UnityEngine.Color _dayColor = new UnityEngine.Color(1.0f, 1.0f, 1.0f);
-    UnityEngine.Color _nightColor = new UnityEngine.Color(0.5f, 0.5f, 0.8f);
+    UnityEngine.Color _nightColor = new UnityEngine.Color(0.4f, 0.4f, 0.7f);
 
     float _redIncrease;
     float _greenIncrease;
@@ -56,6 +57,7 @@ public class DayNightScript : MonoBehaviour
         _currentHandRotation = 360 * (_timePassed/_cycleLength);
 
         _clockHandTransform.eulerAngles = new Vector3(0, 0, -_currentHandRotation);
+        _lamp.SetActive(false);
     }
 
     private void Update()
@@ -87,10 +89,18 @@ public class DayNightScript : MonoBehaviour
             if (timeRatio >= 0.25f && timeRatio <= 0.5f)
             {
                 _globalLight.color -= new UnityEngine.Color(_redIncrease, _greenIncrease, _blueIncrease);
+                if (!_lamp.activeInHierarchy)
+                {
+                    _lamp.SetActive(true);
+                }
             }
             else if (timeRatio >= 0.75f && timeRatio <= 1.0f)
             {
                 _globalLight.color += new UnityEngine.Color(_redIncrease, _greenIncrease, _blueIncrease);
+                if (_lamp.activeInHierarchy)
+                {
+                    _lamp.SetActive(false);
+                }
             }
 
             
