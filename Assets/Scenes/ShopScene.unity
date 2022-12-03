@@ -3880,6 +3880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _globalLight: {fileID: 1807285289}
+  _lamp: {fileID: 1928914425}
   _clockHand: {fileID: 6155330737063824660}
   _daytime: 0
   _timePassed: 0
@@ -4743,6 +4744,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915975594}
   m_CullTransparentMesh: 1
+--- !u!1 &1928914425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8343490477325700495, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
+  m_PrefabInstance: {fileID: 6155330737063824659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1977284071
 GameObject:
   m_ObjectHideFlags: 0
