@@ -2134,10 +2134,6 @@ PrefabInstance:
       propertyPath: _dnScript
       value: 
       objectReference: {fileID: 26504381}
-    - target: {fileID: 540337023391378173, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
-      propertyPath: m_PointLightOuterRadius
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2862934782209185295, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.8

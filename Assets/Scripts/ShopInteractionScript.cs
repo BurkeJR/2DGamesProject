@@ -23,7 +23,11 @@ public class ShopInteractionScript : MonoBehaviour
     public GameObject _bulletButton;
     public GameObject _speedButton;
 
-    bool _spriteOn;
+    public GameObject _eButton;
+
+    SpriteRenderer _srender;
+
+    bool _canOpenShop;
     bool _shopOpen;
 
     int _playerCurrency;
@@ -35,9 +39,11 @@ public class ShopInteractionScript : MonoBehaviour
     private void Start()
     {
         _as = GetComponent<AudioSource>();
-        _spriteOn = false;
+        _canOpenShop = false;
         _shopOpen = false;
         _shopCanvas.SetActive(false);
+        _srender = GetComponent<SpriteRenderer>();
+        _eButton.SetActive(false);
 
         _playerCurrency = PlayerPrefs.GetInt(ConstLabels.pref_player_currency);
         _weapon.ResetAmmo();
@@ -49,17 +55,11 @@ public class ShopInteractionScript : MonoBehaviour
     private void Update()
     {
         // sprite is on so player is in proximity to open shop
-        if (_spriteOn && Input.GetKeyDown(KeyCode.E))
+        if (_canOpenShop && Input.GetKeyDown(KeyCode.E))
         {
-            // shop interaction
-            /* if some button is pressed, open shop (probably call a method in player that tells it
-             * to disable movement, then when shop is closed enable movement again)
-             */
             if (_shopOpen)
             {
-                _shopOpen = !_shopOpen;
-                _shopCanvas.SetActive(false);
-                ResumeGame();
+                CloseShop();
             }
             else
             {
@@ -68,6 +68,13 @@ public class ShopInteractionScript : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+
+    public void CloseShop()
+    {
+        _shopOpen = !_shopOpen;
+        _shopCanvas.SetActive(false);
+        ResumeGame();
     }
 
     private void FixedUpdate()
@@ -80,19 +87,21 @@ public class ShopInteractionScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!_spriteOn)
+        if (!_canOpenShop)
         {
-            _spriteOn = true;
-            GetComponent<SpriteRenderer>().enabled = true;
+            _canOpenShop = true;
+            _srender.enabled = true;
+            _eButton.SetActive(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (_spriteOn)
+        if (_canOpenShop)
         {
-            _spriteOn = false;
-            GetComponent<SpriteRenderer>().enabled = false;
+            _canOpenShop = false;
+            _srender.enabled = false;
+            _eButton.SetActive(false);
         }
     }
 
