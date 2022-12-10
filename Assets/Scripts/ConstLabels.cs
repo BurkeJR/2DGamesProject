@@ -28,7 +28,7 @@ public class ConstLabels
 
     // player
     public const string pref_player_bullets = "Bullets";
-    public const string pref_player_gun_damage = "GunDamage";
+    public const string pref_player_gun_spread= "GunSpread";
     public const string pref_player_melee_damage = "MeleeDamage";
     public const string pref_player_currency = "Currency";
     public const string pref_player_ammo = "Ammo";

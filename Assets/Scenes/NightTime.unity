@@ -305,6 +305,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1695281694, guid: 426b38d4a0828d948b113fbf7412beba, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695281694, guid: 426b38d4a0828d948b113fbf7412beba, type: 3}
+      propertyPath: m_LinearDrag
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695281694, guid: 426b38d4a0828d948b113fbf7412beba, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4906774225671593815, guid: 426b38d4a0828d948b113fbf7412beba, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -352,6 +364,10 @@ PrefabInstance:
     - target: {fileID: 4906774225671593816, guid: 426b38d4a0828d948b113fbf7412beba, type: 3}
       propertyPath: m_Name
       value: GreenSnakePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906774225671593816, guid: 426b38d4a0828d948b113fbf7412beba, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 426b38d4a0828d948b113fbf7412beba, type: 3}

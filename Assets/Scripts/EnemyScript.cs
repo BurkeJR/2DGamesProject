@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour
     public PlantingScript _plantScript;
     public farmMGRScript farmMGRScript;
 
+
     GameObject _target;
     public float _speed;
     public GameObject _manager;
@@ -38,14 +39,21 @@ public class EnemyScript : MonoBehaviour
 
     void UpdateTarget()
     {
-        _plants = _plantScript._cropList;
+        if(_plantScript._cropList != null)
+        {
+            _plants = _plantScript._cropList;
+        }
+        
         if (_plants.Count > 0)
         {
             float smallestDistance = float.MaxValue;
             int closestPlant = 0;
+            float maxVar = .5f;
             for (int i = 0; i < _plants.Count; i++)
             {
-                float dist = Vector2.Distance(_transform.position, _plants[i].transform.position);
+                float variation = Random.Range(-maxVar, maxVar);
+                Vector2 randTar = new Vector2(_plants[i].transform.position.x + variation, _plants[i].transform.position.y + variation);
+                float dist = Vector2.Distance(_transform.position, randTar);
                 if (dist < smallestDistance)
                 {
                     smallestDistance = dist;
@@ -80,6 +88,8 @@ public class EnemyScript : MonoBehaviour
             {
                 this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
             }
+
+
             _transform.position = Vector2.MoveTowards(_transform.position, targetPos, _speed * Time.deltaTime);
 
             _anim.SetFloat("Horizontal", direction.y);
@@ -110,12 +120,34 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Crop" && _touchedPlant == false)
+        if ((collision.gameObject.tag == "Crop" || collision.gameObject.tag == "beanPlant") && _touchedPlant == false)
         {
             _touchedPlant = true;
             _eating = true;
+            if(collision.gameObject.tag == "Crop")
+            {
+                StartCoroutine(killPlant(collision.gameObject));
+            }
+            else if(collision.gameObject.tag == "beanPlant")
+            {
+                StartCoroutine(wavePlant(collision.gameObject));
+            }
             
-            StartCoroutine(killPlant(collision.gameObject));
+        }
+    }
+
+    IEnumerator wavePlant(GameObject toWave)
+    {
+        if (!toWave.Equals(null))
+        {
+            yield return new WaitForSeconds(2f);
+            if (_touchedPlant)
+            {
+                toWave.gameObject.GetComponent<Animator>().SetBool("touched", true);
+                yield return new WaitForSeconds(.3f);
+                toWave.gameObject.GetComponent<Animator>().SetBool("touched", false);
+            }
+            _eating = false;
         }
     }
 
@@ -123,13 +155,11 @@ public class EnemyScript : MonoBehaviour
     {
         if (!toDestroy.Equals(null))
         {
-            
             yield return new WaitForSeconds(7f);
             if (_touchedPlant)
             {
                 _touchedPlant = false;
                 _plantScript._cropList.Remove(toDestroy);
-                // get list of targetting animals and retarget them here
                 Destroy(toDestroy);
             }
             _eating = false;

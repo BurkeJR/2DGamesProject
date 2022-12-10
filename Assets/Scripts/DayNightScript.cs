@@ -22,7 +22,7 @@ public class DayNightScript : MonoBehaviour
     public float _lastUpdate;
 
     UnityEngine.Color _dayColor = new UnityEngine.Color(1.0f, 1.0f, 1.0f);
-    UnityEngine.Color _nightColor = new UnityEngine.Color(0.4f, 0.4f, 0.7f);
+    UnityEngine.Color _nightColor = new UnityEngine.Color(0.2f, 0.2f, 0.5f);
 
     float _redIncrease;
     float _greenIncrease;

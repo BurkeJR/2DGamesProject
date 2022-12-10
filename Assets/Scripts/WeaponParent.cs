@@ -22,6 +22,7 @@ public class WeaponParent : MonoBehaviour
     private GameObject _muzzle;
 
     public Transform _origin;
+    Transform _guntrans;
     public float radius;
 
     public AudioClip _slash;
@@ -38,11 +39,11 @@ public class WeaponParent : MonoBehaviour
         _sword = this.transform.GetChild(2).gameObject;
         _gun = this.transform.GetChild(0).gameObject;
         _muzzle = this.transform.GetChild(1).gameObject;
+        _guntrans = transform.GetChild(1).transform;
 
         ResetAmmo();
 
-        _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_gun_damage) 
-            + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee);
+        _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee);
         _swordDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_melee_damage)
             + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_gun);
 
@@ -113,14 +114,29 @@ public class WeaponParent : MonoBehaviour
         }
         else 
         {
+            float maxAngle = 10f;
             print(_ammo);
             if (_ammo > 0)
             {
                 _as.PlayOneShot(_shotgun);
                 _ganimator.SetTrigger("Attack");
                 _attackBlocked = true;
-                GameObject clone = Instantiate(_bulletPrefab, transform.GetChild(1).transform.position, transform.rotation);
+                GameObject clone = Instantiate(_bulletPrefab, _guntrans.position, transform.rotation);
                 clone.GetComponent<bulletScript>()._damage = _gunDamage;
+                if(PlayerPrefs.GetInt(ConstLabels.pref_player_gun_spread) == 1)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        // Generate a random angle between -maxAngle and maxAngle
+                        float angle = Random.Range(-maxAngle, maxAngle);
+                        Quaternion rotation = Quaternion.Euler(0, 0, angle + Mathf.Atan2(PointerPosition.y - transform.position.y, PointerPosition.x - 
+                                                                                transform.position.x) * Mathf.Rad2Deg);
+                        GameObject clones = Instantiate(_bulletPrefab, _guntrans.position, rotation);
+                        clones.GetComponent<bulletScript>()._damage = _gunDamage;
+                    }
+                }
+                
+                
                 _ammo--;
                 PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, _ammo);
                 StartCoroutine(DelayAttack(_gunDelay));

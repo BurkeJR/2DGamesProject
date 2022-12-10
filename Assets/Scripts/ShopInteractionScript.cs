@@ -165,7 +165,7 @@ public class ShopInteractionScript : MonoBehaviour
         {
             _as.PlayOneShot(_menuClick);
             _playerCurrency -= _upgradeCost;
-            PlayerPrefs.SetInt(ConstLabels.pref_upgrade_gun, 1);
+            PlayerPrefs.SetInt(ConstLabels.pref_player_gun_spread, 1);
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
             UpdateShop();
         }
