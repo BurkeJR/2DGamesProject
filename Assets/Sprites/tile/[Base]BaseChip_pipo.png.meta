@@ -712,7 +712,7 @@ TextureImporter:
     second: '[Base]BaseChip_pipo_235'
   - first:
       213: -4695375075696844395
-    second: '[Base]BaseChip_pipo_236'
+    second: big_sign
   - first:
       213: -8195574174581433945
     second: '[Base]BaseChip_pipo_237'
@@ -7903,7 +7903,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: '[Base]BaseChip_pipo_236'
+      name: big_sign
       rect:
         serializedVersion: 2
         x: 128
