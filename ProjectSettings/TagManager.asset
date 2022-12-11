@@ -9,6 +9,7 @@ TagManager:
   - Crop
   - Targeted
   - beanPlant
+  - fire
   layers:
   - Default
   - TransparentFX

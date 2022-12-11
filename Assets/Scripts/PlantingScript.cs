@@ -129,9 +129,6 @@ public class PlantingScript : MonoBehaviour
     {
         RaycastHit2D hitRight = Physics2D.Raycast(_player.transform.position + new Vector3(_player.transform.position.x / 2, 0, 0), new Vector3(0, 0, 1));
         RaycastHit2D hitLeft = Physics2D.Raycast(_player.transform.position - new Vector3(_player.transform.position.x / 2, 0, 0), new Vector3(0, 0, 1));
-        print(_player.transform.position);
-        print(_player.transform.position + new Vector3(_player.transform.position.x / 2, 0, 0));
-        print(_player.transform.position - new Vector3(_player.transform.position.x / 2, 0, 0));
         if (hitRight.collider == null && hitLeft.collider == null)
         {
             return true;

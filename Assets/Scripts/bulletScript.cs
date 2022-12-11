@@ -12,8 +12,12 @@ public class bulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rbody = GetComponent<Rigidbody2D>();
-        _rbody.velocity = transform.right * speed;
+        if(gameObject.tag != "beanPlant")
+        {
+            _rbody = GetComponent<Rigidbody2D>();
+            _rbody.velocity = transform.right * speed;
+        }
+        
     }
 
     // Update is called once per frame
@@ -37,6 +41,11 @@ public class bulletScript : MonoBehaviour
         if (health = collider.gameObject.GetComponent<HealthScript>())
         {
             health.GetHit(_damage, collider.gameObject);
+        }
+        else if ((health = collider.gameObject.GetComponent<HealthScript>()) && gameObject.tag == "beanPlant")
+        {
+            health.GetHit(_damage, collider.gameObject);
+            return;
         }
         Destroy(gameObject);
     }

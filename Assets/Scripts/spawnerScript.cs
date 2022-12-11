@@ -35,7 +35,7 @@ public class spawnerScript : MonoBehaviour
         if ((!_dnScript._daytime) && (_spawnedTonight < (_nightNum * 2) + 15) && (_random.Next(0, 320) == 0)) 
         {
             int r = _random.Next(0, 100);
-            if (r < 5)
+            if (r < 5 && _nightNum == 7)
             {
                 runSpawn(_bearPrefab);
             }
@@ -78,9 +78,30 @@ public class spawnerScript : MonoBehaviour
 
     void runSpawn(GameObject toSpawn)
     {
-        float wait = _random.Next(1, 5);
-        float x = _random.Next(-9, 19);
-        float y = _random.Next(-21, -3);
-        spawnEnemy(toSpawn, x, y);
+        float spot = _random.Next(1, 4);
+        if(spot == 1)
+        {
+            float x = _random.Next(-9, -3);
+            float y = _random.Next(-21, -3);
+            spawnEnemy(toSpawn, x, y);
+        }
+        else if(spot == 2)
+        {
+            float x = _random.Next(12, 19);
+            float y = _random.Next(-21, -3);
+            spawnEnemy(toSpawn, x, y);
+        }
+        else if (spot == 3)
+        {
+            float x = _random.Next(-9, 19);
+            float y = _random.Next(-21, -15);
+            spawnEnemy(toSpawn, x, y);
+        }
+        else if (spot == 4)
+        {
+            float x = _random.Next(-9, 19);
+            float y = _random.Next(-9, -3);
+            spawnEnemy(toSpawn, x, y);
+        }
     }
 }

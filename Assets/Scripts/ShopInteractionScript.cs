@@ -124,18 +124,25 @@ public class ShopInteractionScript : MonoBehaviour
             _bulletButton.GetComponent<Button>().interactable = false;
             _speedButton.GetComponent<Button>().interactable = false;
         }
-
-        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) != 0)
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) == 1)
+        {
+            _bulletCostText.text = "150";
+        }
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) == 2)
         {
             _meleeCostText.text = "----";
             _meleeButton.GetComponent<Button>().interactable = false;
         }
-        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_gun) != 0)
+        if (PlayerPrefs.GetInt(ConstLabels.pref_player_gun_spread) != 0)
         {
             _gunCostText.text = "----";
             _gunButton.GetComponent<Button>().interactable = false;
         }
-        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) != 1)
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 2)
+        {
+            _bulletCostText.text = "150";
+        }
+        if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 4)
         {
             _bulletCostText.text = "----";
             _bulletButton.GetComponent<Button>().interactable = false;
@@ -153,9 +160,18 @@ public class ShopInteractionScript : MonoBehaviour
         {
             _as.PlayOneShot(_menuClick);
             _playerCurrency -= _upgradeCost;
-            PlayerPrefs.SetInt(ConstLabels.pref_upgrade_melee, 1);
-            PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
-            UpdateShop();
+            if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 0)
+            {
+                PlayerPrefs.SetInt(ConstLabels.pref_upgrade_melee, 1);
+                PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
+                UpdateShop(); 
+            }
+            else if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 1)
+            {
+                PlayerPrefs.SetInt(ConstLabels.pref_upgrade_melee, 2);
+                PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
+                UpdateShop();
+            }
         }
     }
 
@@ -177,10 +193,21 @@ public class ShopInteractionScript : MonoBehaviour
         {
             _as.PlayOneShot(_menuClick);
             _playerCurrency -= _upgradeCost;
-            PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 2);
-            PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
-            UpdateShop();
-            _weapon.ResetAmmo();
+            if(PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 1)
+            {
+                PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 2);
+                PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
+                UpdateShop();
+                _weapon.ResetAmmo();
+            }
+            else if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 2)
+            {
+                PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 4);
+                PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
+                UpdateShop();
+                _weapon.ResetAmmo();
+            }
+            
         }
     }
 

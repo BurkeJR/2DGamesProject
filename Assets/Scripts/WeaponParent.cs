@@ -43,9 +43,9 @@ public class WeaponParent : MonoBehaviour
 
         ResetAmmo();
 
-        _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee);
+        _gunDamage = PlayerPrefs.GetInt(ConstLabels.pref_upgrade_gun);
         _swordDamage = PlayerPrefs.GetInt(ConstLabels.pref_player_melee_damage)
-            + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_gun);
+            + PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee);
 
         if (_gunDamage == 0)
         {
@@ -135,8 +135,7 @@ public class WeaponParent : MonoBehaviour
                         clones.GetComponent<bulletScript>()._damage = _gunDamage;
                     }
                 }
-                
-                
+
                 _ammo--;
                 PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, _ammo);
                 StartCoroutine(DelayAttack(_gunDelay));

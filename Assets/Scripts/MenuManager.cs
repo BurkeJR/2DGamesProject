@@ -42,7 +42,7 @@ public class MenuManager : MonoBehaviour
 
         // player
         PlayerPrefs.SetInt(ConstLabels.pref_player_ammo, 7);
-        PlayerPrefs.SetInt(ConstLabels.pref_player_currency, 0);
+        PlayerPrefs.SetInt(ConstLabels.pref_player_currency, 1000);
         PlayerPrefs.SetInt(ConstLabels.pref_player_gun_spread, 0);
         PlayerPrefs.SetInt(ConstLabels.pref_player_melee_damage, 1);
 
