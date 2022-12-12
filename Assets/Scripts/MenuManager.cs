@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class MenuManager : MonoBehaviour
 
     AudioSource _as;
     public AudioClip _menuClick;
-    public Text _highScoreText;
+    public TextMeshProUGUI _highScoreText;
 
     private void Start()
     {
