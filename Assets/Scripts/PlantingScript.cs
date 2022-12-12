@@ -202,6 +202,6 @@ public class PlantingScript : MonoBehaviour
             Destroy(crop);
             i++;
         }
-        _as.PlayOneShot(_gainCoins);
+        _as.PlayOneShot(_gainCoins, .7f);
     }
 }

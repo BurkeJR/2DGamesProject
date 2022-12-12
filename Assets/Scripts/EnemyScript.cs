@@ -160,9 +160,10 @@ public class EnemyScript : MonoBehaviour
     {
         if (!toWave.Equals(null))
         {
-            yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(2f);
                 toWave.GetComponent<Animator>().SetBool("touched", true);
                 yield return new WaitForSeconds(1f);
+                toWave.GetComponent<Animator>().SetBool("touched", false);
                 toWave.gameObject.tag = "Crop";
             _eating = false;
         }

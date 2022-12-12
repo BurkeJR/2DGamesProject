@@ -120,7 +120,7 @@ public class WeaponParent : MonoBehaviour
         }
         if (_swordOut && !_dnScript._daytime)
         {
-            _as.PlayOneShot(_slash);
+            _as.PlayOneShot(_slash, .5f);
             _sanimator.SetTrigger("Attack");
             _attackBlocked = true;
             StartCoroutine(DelayAttack(_swordDelay));
