@@ -104,6 +104,10 @@ public class PlantingScript : MonoBehaviour
         // turn off plant radii if nightime
         if (!_dnScript._daytime && !_radiiHidden)
         {
+            if (_cropList.Count == 0 && OnSoil() && AwayFromPlants())
+            {
+                PlantSeed();
+            }
             foreach (GameObject pl in _cropList)
             {
                 Transform rad = pl.transform.Find("Radius");
@@ -145,11 +149,9 @@ public class PlantingScript : MonoBehaviour
         // RaycastHit2D hitLeft = Physics2D.Raycast(_player.transform.position - new Vector3(_player.transform.position.x / 2, 0, 0), new Vector3(0, 0, 1));
         if (hit.collider == null)
         {
-            print("no hit");
             return true;
         } else
         {
-            print("hit");
             return false;
         }
     }

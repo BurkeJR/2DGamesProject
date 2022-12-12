@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class WeaponParent : MonoBehaviour
 {
+    public DayNightScript _dnScript;
+
     public Vector2 PointerPosition { get; set; }
     public Animator _ganimator;
     public Animator _sanimator;
@@ -19,6 +21,7 @@ public class WeaponParent : MonoBehaviour
 
     private GameObject _sword;
     private GameObject _gun;
+    private GameObject _hoe;
     private GameObject _muzzle;
 
     public Transform _origin;
@@ -40,6 +43,7 @@ public class WeaponParent : MonoBehaviour
         _gun = this.transform.GetChild(0).gameObject;
         _muzzle = this.transform.GetChild(1).gameObject;
         _guntrans = transform.GetChild(1).transform;
+        _hoe = this.transform.GetChild(3).gameObject;
 
         ResetAmmo();
 
@@ -61,11 +65,11 @@ public class WeaponParent : MonoBehaviour
     {
         if(!pauseMenuScript._GameIsPaused)
         {
-            if (Input.GetKey(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "ShopScene")
+            if (Input.GetKey(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "ShopScene" && !_dnScript._daytime)
             {
                 _swordOut = false;
             }
-            else if (Input.GetKey(KeyCode.Alpha2) || SceneManager.GetActiveScene().name == "ShopScene")
+            else if ((Input.GetKey(KeyCode.Alpha2) || SceneManager.GetActiveScene().name == "ShopScene"))
             {
                 _swordOut = true;
             }
@@ -84,19 +88,28 @@ public class WeaponParent : MonoBehaviour
             }
             transform.localScale = scale;
 
-            if (_swordOut)
+            if (_swordOut && !_dnScript._daytime)
             {
                 _sword.SetActive(true);
                 _muzzle.SetActive(false);
                 _gun.SetActive(false);
+                _hoe.SetActive(false);
             }
-            else if (!_swordOut && SceneManager.GetActiveScene().name != "ShopScene")
+            else if (!_swordOut && SceneManager.GetActiveScene().name != "ShopScene" && !_dnScript._daytime)
             {
                 _sword.SetActive(false);
                 _muzzle.SetActive(true);
                 _gun.SetActive(true);
+                _hoe.SetActive(false);
             }
-        }
+            else if(_dnScript._daytime && SceneManager.GetActiveScene().name != "ShopScene")
+            {
+                _sword.SetActive(false);
+                _muzzle.SetActive(false);
+                _gun.SetActive(false);
+                _hoe.SetActive(true);
+            }
+        } 
     }
 
     public void Attack()
@@ -105,14 +118,14 @@ public class WeaponParent : MonoBehaviour
         {
             return;
         }
-        if (_swordOut)
+        if (_swordOut && !_dnScript._daytime)
         {
             _as.PlayOneShot(_slash);
             _sanimator.SetTrigger("Attack");
             _attackBlocked = true;
             StartCoroutine(DelayAttack(_swordDelay));
         }
-        else 
+        else if(!_dnScript._daytime)
         {
             float maxAngle = 10f;
             print(_ammo);
