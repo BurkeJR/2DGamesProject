@@ -8,7 +8,7 @@ public class EnemyScript : MonoBehaviour
 {
     public PlantingScript _plantScript;
     public farmMGRScript farmMGRScript;
-
+    public DayNightScript _dnScript;
 
     GameObject _target;
     public float _speed;
@@ -31,6 +31,8 @@ public class EnemyScript : MonoBehaviour
         UpdateTarget();
         farmMGRScript = FindObjectOfType<farmMGRScript>();
         _plantScript = FindObjectOfType<PlantingScript>();
+        _dnScript = FindObjectOfType<DayNightScript>();
+
         _plants = new List<GameObject>();
         _anim = GetComponent<Animator>();
         _eating = false;
@@ -115,6 +117,11 @@ public class EnemyScript : MonoBehaviour
             // play eating sound
             farmMGRScript.PlayEatingSound();
             _eatTimer = Time.time;
+        }
+
+        if (_dnScript._daytime)
+        {
+            Destroy(gameObject);
         }
     }
 

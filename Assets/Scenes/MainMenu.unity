@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuClick: {fileID: 8300000, guid: 9b918b1d5d58cad44a8e9ed42d0f5bf5, type: 3}
-  _highScoreText: {fileID: 0}
+  _highScoreText: {fileID: 95448282}
 --- !u!4 &468623403
 Transform:
   m_ObjectHideFlags: 0
