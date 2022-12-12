@@ -42,7 +42,7 @@ public class farmMGRScript : MonoBehaviour
 
     public void PlayDeathSound()
     {
-        _as.PlayOneShot(_death, .5f);
+        _as.PlayOneShot(_death, .2f);
     }
 
     IEnumerator earned()
