@@ -26,10 +26,13 @@ public class PlantingScript : MonoBehaviour
     public AudioClip _gainCoins;
     public AudioClip _plantCrop;
 
+    public LayerMask _plantLayer;
+
+
     Dictionary<int, String> _seedDict = new Dictionary<int, String>();
     int _currentSeed;
     int _maxSeedInd;
-    float _lastPlanted;
+    bool _radiiHidden;
     AudioSource _as;
 
     // list of crop objects
@@ -62,7 +65,7 @@ public class PlantingScript : MonoBehaviour
         _currentSeed = 0;
         _maxSeedInd = 4;
 
-        _lastPlanted = Time.time;
+        _radiiHidden = false;
     }
 
     private void Update()
@@ -97,6 +100,17 @@ public class PlantingScript : MonoBehaviour
         {
             HandleLoss();
         }
+
+        // turn off plant radii if nightime
+        if (!_dnScript._daytime && !_radiiHidden)
+        {
+            foreach (GameObject pl in _cropList)
+            {
+                Transform rad = pl.transform.Find("Radius");
+                rad.GetComponent<SpriteRenderer>().enabled = false;
+            }
+            _radiiHidden = true;
+        }
     }
 
     
@@ -127,45 +141,18 @@ public class PlantingScript : MonoBehaviour
 
     bool AwayFromPlants()
     {
-        RaycastHit2D hitRight = Physics2D.Raycast(_player.transform.position + new Vector3(_player.transform.position.x / 2, 0, 0), new Vector3(0, 0, 1));
-        RaycastHit2D hitLeft = Physics2D.Raycast(_player.transform.position - new Vector3(_player.transform.position.x / 2, 0, 0), new Vector3(0, 0, 1));
-        if (hitRight.collider == null && hitLeft.collider == null)
+        RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, new Vector3(0, 0, -1), 20, _plantLayer);
+        // RaycastHit2D hitLeft = Physics2D.Raycast(_player.transform.position - new Vector3(_player.transform.position.x / 2, 0, 0), new Vector3(0, 0, 1));
+        if (hit.collider == null)
         {
+            print("no hit");
             return true;
         } else
         {
+            print("hit");
             return false;
         }
     }
-
-    /*
-    void AddSeed(GameObject plantPrefab)
-    {
-        if (plantPrefab == _CornPrefab)
-        {
-            PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, 1);
-
-        } else if (plantPrefab == _BeanPrefab)
-        {
-            PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, 1);
-
-        }
-        else if (plantPrefab == _PepperPrefab)
-        {
-            PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, 1);
-
-        }
-        else if (plantPrefab == _EggplantPrefab)
-        {
-            PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, 1);
-
-        }
-        else if (plantPrefab == _CarrotPrefab)
-        {
-            PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, 1);
-        }
-    } 
-    */
 
     void PlantSeed()
     {
@@ -200,7 +187,6 @@ public class PlantingScript : MonoBehaviour
             _cropList.Add(plant);
         }
         _as.PlayOneShot(_plantCrop);
-        _lastPlanted = Time.time;
     }
 
     public void HarvestCrops()
