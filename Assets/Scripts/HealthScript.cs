@@ -44,10 +44,6 @@ public class HealthScript : MonoBehaviour
         _mgrScript.PlayDeathSound();
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
-        if (GetComponent<SnakeScript>())
-        {
-            GetComponent<SnakeScript>().CleanUp();
-        }
         Invoke("MakeDead", 1);
     }
 

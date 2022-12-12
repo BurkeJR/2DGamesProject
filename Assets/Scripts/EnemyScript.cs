@@ -27,7 +27,7 @@ public class EnemyScript : MonoBehaviour
     float _eatTimer;
 
     // Start is called before the first frame update
-    protected virtual void Start()
+    void Start()
     {
         _transform = transform;
         _srender = GetComponent<SpriteRenderer>();
@@ -79,7 +79,34 @@ public class EnemyScript : MonoBehaviour
     {
         if (_target != null)
         {
+            Vector3 targetPos = _target.transform.position;
+
+            float dist = Vector2.Distance(_transform.position, targetPos);
+            Vector2 direction = targetPos - _transform.position;
+
+
+            if (direction.x < 0)
+            {
+                _srender.flipX = true;
+            }
+            else
+            {
+                _srender.flipX = false;
+            }
+
             DoMovement();
+
+            _anim.SetFloat("Horizontal", direction.y);
+            _anim.SetFloat("Vertical", direction.x);
+
+            if (dist > Vector2.Distance(_transform.position, targetPos))
+            {
+                _anim.SetFloat("Speed", 1);
+            }
+            else
+            {
+                _anim.SetFloat("Speed", 0);
+            }
         }
         else
         {
@@ -100,42 +127,9 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    private void DoMovement()
+    protected virtual void DoMovement()
     {
-        Vector3 targetPos = GetTargetPos();
-
-        float dist = Vector2.Distance(_transform.position, targetPos);
-        Vector2 direction = targetPos - _transform.position;
-
-
-        if (direction.x < 0)
-        {
-            _srender.flipX = true;
-        }
-        else
-        {
-            _srender.flipX = false;
-        }
-
-
-        _transform.position = Vector2.MoveTowards(_transform.position, targetPos, _speed * Time.deltaTime);
-
-        _anim.SetFloat("Horizontal", direction.y);
-        _anim.SetFloat("Vertical", direction.x);
-
-        if (dist > Vector2.Distance(_transform.position, targetPos))
-        {
-            _anim.SetFloat("Speed", 1);
-        }
-        else
-        {
-            _anim.SetFloat("Speed", 0);
-        }
-    }
-
-    protected virtual Vector2 GetTargetPos()
-    {
-        return _target.transform.position;
+        _transform.position = Vector2.MoveTowards(_transform.position, _target.transform.position, _speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
