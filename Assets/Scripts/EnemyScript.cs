@@ -4,17 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements.Experimental;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyScript : MonoBehaviour
 {
     public PlantingScript _plantScript;
     public farmMGRScript farmMGRScript;
     public DayNightScript _dnScript;
 
-    GameObject _target;
+    protected GameObject _target;
     public float _speed;
     public GameObject _manager;
 
-    Transform _transform;
+    protected Transform _transform;
+    protected SpriteRenderer _srender;
 
     Animator _anim;
     bool _touchedPlant = false;
@@ -25,9 +27,10 @@ public class EnemyScript : MonoBehaviour
     float _eatTimer;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         _transform = transform;
+        _srender = GetComponent<SpriteRenderer>();
         UpdateTarget();
         farmMGRScript = FindObjectOfType<farmMGRScript>();
         _plantScript = FindObjectOfType<PlantingScript>();
@@ -39,7 +42,7 @@ public class EnemyScript : MonoBehaviour
         _eatTimer = Time.time;
     }
 
-    void UpdateTarget()
+    protected virtual void UpdateTarget()
     {
         if(_plantScript._cropList != null)
         {
@@ -76,35 +79,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (_target != null)
         {
-            Vector3 targetPos = _target.transform.position;
-
-            float dist = Vector2.Distance(_transform.position, targetPos);
-            Vector2 direction = targetPos - _transform.position;
-
-
-            if (direction.x < 0)
-            {
-                this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
-            }
-            else
-            {
-                this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
-            }
-
-
-            _transform.position = Vector2.MoveTowards(_transform.position, targetPos, _speed * Time.deltaTime);
-
-            _anim.SetFloat("Horizontal", direction.y);
-            _anim.SetFloat("Vertical", direction.x);
-
-            if (dist > Vector2.Distance(_transform.position, targetPos))
-            {
-                _anim.SetFloat("Speed", 1);
-            }
-            else
-            {
-                _anim.SetFloat("Speed", 0);
-            }
+            DoMovement();
         }
         else
         {
@@ -123,6 +98,44 @@ public class EnemyScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void DoMovement()
+    {
+        Vector3 targetPos = GetTargetPos();
+
+        float dist = Vector2.Distance(_transform.position, targetPos);
+        Vector2 direction = targetPos - _transform.position;
+
+
+        if (direction.x < 0)
+        {
+            _srender.flipX = true;
+        }
+        else
+        {
+            _srender.flipX = false;
+        }
+
+
+        _transform.position = Vector2.MoveTowards(_transform.position, targetPos, _speed * Time.deltaTime);
+
+        _anim.SetFloat("Horizontal", direction.y);
+        _anim.SetFloat("Vertical", direction.x);
+
+        if (dist > Vector2.Distance(_transform.position, targetPos))
+        {
+            _anim.SetFloat("Speed", 1);
+        }
+        else
+        {
+            _anim.SetFloat("Speed", 0);
+        }
+    }
+
+    protected virtual Vector2 GetTargetPos()
+    {
+        return _target.transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

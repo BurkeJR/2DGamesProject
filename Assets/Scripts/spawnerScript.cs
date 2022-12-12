@@ -74,6 +74,11 @@ public class spawnerScript : MonoBehaviour
         GameObject clone = Instantiate(toSpawn, pos, Quaternion.identity);
         clone.GetComponent<EnemyScript>()._manager = gameObject;
         clone.GetComponent<EnemyScript>()._plantScript = _plantScript;
+        if (clone.GetComponent<SnakeScript>() != null)
+        {
+            clone.GetComponent<SnakeScript>()._manager = gameObject;
+            clone.GetComponent<SnakeScript>()._plantScript = _plantScript;
+        }
     }
 
     void runSpawn(GameObject toSpawn)
