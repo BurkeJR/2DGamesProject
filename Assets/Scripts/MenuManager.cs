@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
 
     AudioSource _as;
     public AudioClip _menuClick;
+    public Text _highScoreText;
 
     private void Start()
     {
         _as = GetComponent<AudioSource>(); 
         LoadDefaultGlobals();
+        if (!PlayerPrefs.HasKey(ConstLabels.pref_highScore)){
+            PlayerPrefs.SetInt(ConstLabels.pref_highScore, 0);
+        } else
+        {
+            _highScoreText.text = "HIGH SCORE:\n" + (PlayerPrefs.GetInt(ConstLabels.pref_highScore)) + " DAYS";
+        }
     }
 
     public void ChangeScenByName(string name)
     {
-        /*_as.PlayOneShot(_menuClick);*/
+        // _as.PlayOneShot(_menuClick);
         SceneManager.LoadScene(name);
     }
    

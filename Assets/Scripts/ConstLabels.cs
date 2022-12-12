@@ -20,6 +20,7 @@ public class ConstLabels
     public const string pref_timePassed = "TimePassed";
     public const string pref_lastUpdate = "LastUpdate";
     public const string pref_currentDay = "CurrentDay";
+    public const string pref_highScore = "HighScore";
 
     // light
     public const string pref_light_r = "LightR";

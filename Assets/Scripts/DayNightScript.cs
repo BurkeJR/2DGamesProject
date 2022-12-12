@@ -74,6 +74,10 @@ public class DayNightScript : MonoBehaviour
         {
             _timePassed -= _cycleLength;
             PlayerPrefs.SetInt(ConstLabels.pref_currentDay, PlayerPrefs.GetInt(ConstLabels.pref_currentDay) + 1);
+            
+            if (PlayerPrefs.GetInt(ConstLabels.pref_currentDay) > PlayerPrefs.GetInt(ConstLabels.pref_highScore)){
+                PlayerPrefs.SetInt(ConstLabels.pref_highScore, PlayerPrefs.GetInt(ConstLabels.pref_currentDay));
+            }
         }
 
         //if (PlayerPrefs.GetInt(ConstLabels.pref_currentDay) < ((int)(_timePassed / _cycleLength)))
