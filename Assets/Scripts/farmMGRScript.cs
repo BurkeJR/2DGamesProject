@@ -10,7 +10,7 @@ public class farmMGRScript : MonoBehaviour
     public PlantingScript plScript;
     int currDay;
 
-    AudioSource _as;
+    public AudioSource _as;
     public AudioClip _eating;
     public AudioClip _death;
     public Text _earned;

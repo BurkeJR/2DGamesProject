@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuClick: {fileID: 0}
+  _highScoreText: {fileID: 0}
 --- !u!4 &247937582
 Transform:
   m_ObjectHideFlags: 0
@@ -861,7 +862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -456, y: 66}
+  m_AnchoredPosition: {x: -476, y: 66}
   m_SizeDelta: {x: -1125.8179, y: -380.3632}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1353255657
@@ -1189,7 +1190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 531, y: 66}
+  m_AnchoredPosition: {x: 527, y: 79}
   m_SizeDelta: {x: -1125.8179, y: -380.3632}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1670207551
