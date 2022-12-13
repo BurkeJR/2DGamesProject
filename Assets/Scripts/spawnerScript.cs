@@ -23,6 +23,7 @@ public class spawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _bearSpawned = true;
         _nightNum = PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
         _spawnedTonight = 0;
         _random = new System.Random();
@@ -31,10 +32,6 @@ public class spawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_nightNum == 14 || _nightNum == 21)
-        {
-            _bearSpawned = true;
-        }
         if ((!_dnScript._daytime) && (_spawnedTonight < (_nightNum * 2) + 15) && (_random.Next(0, 320) == 0)) 
         {
             int r = _random.Next(0, 100);
@@ -43,7 +40,6 @@ public class spawnerScript : MonoBehaviour
             {
                 _bearSpawned = false;
                 bearSpawn(_bearPrefab);
-                
             }
             else if (r < 25)
             {
