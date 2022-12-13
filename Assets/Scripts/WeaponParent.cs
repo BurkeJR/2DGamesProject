@@ -15,6 +15,7 @@ public class WeaponParent : MonoBehaviour
 
     private bool _attackBlocked = false;
     private bool _swordOut = false;
+    private bool _hoeOut = false;
 
     public GameObject _bulletPrefab;
     public int _ammo;
@@ -68,10 +69,18 @@ public class WeaponParent : MonoBehaviour
             if (Input.GetKey(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "ShopScene" && !_dnScript._daytime)
             {
                 _swordOut = false;
+                _hoeOut = false;
+
             }
-            else if ((Input.GetKey(KeyCode.Alpha2) || SceneManager.GetActiveScene().name == "ShopScene"))
+            else if (Input.GetKey(KeyCode.Alpha2) && SceneManager.GetActiveScene().name != "ShopScene" && !_dnScript._daytime)
             {
                 _swordOut = true;
+                _hoeOut = false;
+            }
+            else if ((Input.GetKey(KeyCode.Alpha3)) && SceneManager.GetActiveScene().name != "ShopScene")
+            {
+                _swordOut = false;
+                _hoeOut = true;
             }
 
             Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
@@ -88,21 +97,21 @@ public class WeaponParent : MonoBehaviour
             }
             transform.localScale = scale;
 
-            if (_swordOut && !_dnScript._daytime)
+            if (_swordOut && !_hoeOut && !_dnScript._daytime)
             {
                 _sword.SetActive(true);
                 _muzzle.SetActive(false);
                 _gun.SetActive(false);
                 _hoe.SetActive(false);
             }
-            else if (!_swordOut && SceneManager.GetActiveScene().name != "ShopScene" && !_dnScript._daytime)
+            else if (!_swordOut && !_hoeOut && SceneManager.GetActiveScene().name != "ShopScene" && !_dnScript._daytime)
             {
                 _sword.SetActive(false);
                 _muzzle.SetActive(true);
                 _gun.SetActive(true);
                 _hoe.SetActive(false);
             }
-            else if(_dnScript._daytime && SceneManager.GetActiveScene().name != "ShopScene")
+            else if((_dnScript._daytime || _hoeOut) && SceneManager.GetActiveScene().name != "ShopScene")
             {
                 _sword.SetActive(false);
                 _muzzle.SetActive(false);
@@ -114,7 +123,7 @@ public class WeaponParent : MonoBehaviour
 
     public void Attack()
     {
-        if(_attackBlocked || Time.timeScale == 0)
+        if(_attackBlocked || Time.timeScale == 0 || _hoeOut)
         {
             return;
         }

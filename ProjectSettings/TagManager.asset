@@ -11,6 +11,7 @@ TagManager:
   - beanPlant
   - fire
   - Bear
+  - Hoe
   layers:
   - Default
   - TransparentFX

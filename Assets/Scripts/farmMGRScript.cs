@@ -28,11 +28,17 @@ public class farmMGRScript : MonoBehaviour
     {
         if (currDay < PlayerPrefs.GetInt(ConstLabels.pref_currentDay))
         {
-            StartCoroutine(earned());
+            StartCoroutine(earned(15 * plScript._cropList.Count));
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, PlayerPrefs.GetInt(ConstLabels.pref_player_currency) + (15 * plScript._cropList.Count));
             plScript.HarvestCrops();
             currDay++;
         }
+    }
+
+    public void WeedRemoved()
+    {
+        StartCoroutine(earned(5));
+        PlayerPrefs.SetInt(ConstLabels.pref_player_currency, PlayerPrefs.GetInt(ConstLabels.pref_player_currency) + 5);
     }
 
     public void PlayEatingSound()
@@ -45,9 +51,9 @@ public class farmMGRScript : MonoBehaviour
         _as.PlayOneShot(_death, .2f);
     }
 
-    IEnumerator earned()
+    IEnumerator earned(int income)
     {
-        _earned.text = "+" + 15 * plScript._cropList.Count;
+        _earned.text = "+" + income;
         _earned.enabled = true;
         _earned.GetComponent<Animator>().SetBool("money", true);
         yield return new WaitForSeconds(3);
