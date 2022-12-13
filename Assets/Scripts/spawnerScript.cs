@@ -31,11 +31,15 @@ public class spawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_nightNum == 14 || _nightNum == 21)
+        {
+            _bearSpawned = true;
+        }
         if ((!_dnScript._daytime) && (_spawnedTonight < (_nightNum * 2) + 15) && (_random.Next(0, 320) == 0)) 
         {
             int r = _random.Next(0, 100);
             
-            if (_nightNum == 7 && _bearSpawned)
+            if ((_nightNum % 7 == 0) && _bearSpawned)
             {
                 _bearSpawned = false;
                 bearSpawn(_bearPrefab);
