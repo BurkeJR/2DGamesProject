@@ -194,7 +194,7 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         _speed /= 2;
         GetComponent<SpriteRenderer>().color = Color.white;
-        _isSprinting = true
+        _isSprinting = true;
     }
 
     private void OnTriggerExit(Collider other)
