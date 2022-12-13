@@ -5,8 +5,10 @@ using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlantingScript : MonoBehaviour
 {
@@ -19,6 +21,10 @@ public class PlantingScript : MonoBehaviour
     public GameObject _CarrotPrefab;
     public GameObject _PepperPrefab;
     public GameObject _BeanPrefab;
+
+    public GameObject _weed1Prefab;
+    public GameObject _weed2Prefab;
+    public GameObject _weed3Prefab;
 
     public Tilemap _tMap;
     public Tile _dirtTile;
@@ -38,9 +44,10 @@ public class PlantingScript : MonoBehaviour
     // list of crop objects
     List<GameObject> _seedList;
 
-    // tuples of crop game objects and the float of the time they were created.
+    // List of crop game objects
     public List<GameObject> _cropList;
 
+    public List<GameObject> _weedList;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +55,7 @@ public class PlantingScript : MonoBehaviour
         _as = GetComponent<AudioSource>();
 
         _cropList = new List<GameObject>();
+        _weedList = new List<GameObject>();
 
         if(PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) == 0)
         {
@@ -129,6 +137,25 @@ public class PlantingScript : MonoBehaviour
                 rad.GetComponent<SpriteRenderer>().enabled = false;
             }
             _radiiHidden = true;
+        }
+
+        // plant weeds randomly
+        if (Random.Range(0,1000) == 0 && !_dnScript._daytime && _weedList.Count < 5)
+        {
+            GrowWeed();
+        }
+
+        if (_dnScript._daytime && _weedList.Count > 0)
+        {
+            int i = 0;
+            int originalCount = _weedList.Count;
+            while (i < originalCount)
+            {
+                GameObject weed = _weedList[0];
+                _weedList.RemoveAt(0);
+                Destroy(weed);
+                i++;
+            }
         }
     }
 
@@ -218,5 +245,27 @@ public class PlantingScript : MonoBehaviour
             i++;
         }
         _as.PlayOneShot(_gainCoins, .7f);
+    }
+
+    public void GrowWeed()
+    {
+        var position = new Vector3(Random.Range(-10.5f, 19f), Random.Range(-21f, -2f), 0);
+        int weedNum = Random.Range(0, 3);
+        if (weedNum == 0)
+        {
+            var weed = Instantiate(_weed1Prefab, position, Quaternion.identity);
+            _weedList.Add(weed);
+        } 
+        else if (weedNum == 1)
+        {
+            var weed = Instantiate(_weed2Prefab, position, Quaternion.identity);
+            _weedList.Add(weed);
+        }
+        else
+        {
+            var weed = Instantiate(_weed3Prefab, position, Quaternion.identity);
+            _weedList.Add(weed);
+        }
+
     }
 }
