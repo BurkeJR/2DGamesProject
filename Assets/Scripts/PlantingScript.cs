@@ -26,6 +26,13 @@ public class PlantingScript : MonoBehaviour
     public GameObject _weed2Prefab;
     public GameObject _weed3Prefab;
 
+    public GameObject _cornHolder;
+    public GameObject _eggplantHolder;
+    public GameObject _carrotHolder;
+    public GameObject _pepperHolder;
+    public GameObject _beanHolder;
+
+
     public Tilemap _tMap;
     public Tile _dirtTile;
 
@@ -36,6 +43,7 @@ public class PlantingScript : MonoBehaviour
 
 
     Dictionary<int, String> _seedDict = new Dictionary<int, String>();
+    Dictionary<int, GameObject> _holderDict = new Dictionary<int, GameObject>();
     int _currentSeed;
     int _maxSeedInd;
     bool _radiiHidden;
@@ -85,8 +93,19 @@ public class PlantingScript : MonoBehaviour
         _seedDict.Add(3, ConstLabels.pref_pepper_seeds);
         _seedDict.Add(4, ConstLabels.pref_eggplant_seeds);
 
+        _holderDict.Add(0, _cornHolder);
+        _holderDict.Add(1, _beanHolder);
+        _holderDict.Add(2, _carrotHolder);
+        _holderDict.Add(3, _pepperHolder);
+        _holderDict.Add(4, _eggplantHolder);
+
         _currentSeed = 0;
         _maxSeedInd = 4;
+        _cornHolder.SetActive(true);
+        _eggplantHolder.SetActive(false);
+        _carrotHolder.SetActive(false);
+        _pepperHolder.SetActive(false);
+        _beanHolder.SetActive(false);
 
         _radiiHidden = false;
     }
@@ -103,6 +122,7 @@ public class PlantingScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            _holderDict[_currentSeed].SetActive(false);
             if (_currentSeed < _maxSeedInd)
             {
                 _currentSeed += 1;
@@ -111,7 +131,7 @@ public class PlantingScript : MonoBehaviour
             {
                 _currentSeed = 0;
             }
-
+            _holderDict[_currentSeed].SetActive(true);
         }
     }
 
