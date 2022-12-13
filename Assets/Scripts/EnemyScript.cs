@@ -10,6 +10,8 @@ public class EnemyScript : MonoBehaviour
     public PlantingScript _plantScript;
     public farmMGRScript farmMGRScript;
     public DayNightScript _dnScript;
+    private Color _red = new Color(246, 108, 108, 255);
+    private bool _isSprinting = false;
 
     protected GameObject _target;
     public float _speed;
@@ -21,7 +23,7 @@ public class EnemyScript : MonoBehaviour
     Animator _anim;
     bool _touchedPlant = false;
     List<GameObject> _plants;
-
+    System.Random _random;
 
     bool _eating;
     float _eatTimer;
@@ -35,6 +37,7 @@ public class EnemyScript : MonoBehaviour
         farmMGRScript = FindObjectOfType<farmMGRScript>();
         _plantScript = FindObjectOfType<PlantingScript>();
         _dnScript = FindObjectOfType<DayNightScript>();
+        _random = new System.Random();
 
         _plants = new List<GameObject>();
         _anim = GetComponent<Animator>();
@@ -125,6 +128,12 @@ public class EnemyScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (_random.Next(1, 400) == 2 && gameObject.tag == "Bear" && !_isSprinting)
+        {
+            _isSprinting = true;
+            StartCoroutine(sprint());
+        }
     }
 
     protected virtual void DoMovement()
@@ -176,6 +185,16 @@ public class EnemyScript : MonoBehaviour
             }
             _eating = false;
         }
+    }
+
+    IEnumerator sprint()
+    {
+        _speed *= 2;
+        GetComponent<SpriteRenderer>().color = _red;
+        yield return new WaitForSeconds(1.5f);
+        _speed /= 2;
+        GetComponent<SpriteRenderer>().color = Color.white;
+        _isSprinting = true
     }
 
     private void OnTriggerExit(Collider other)

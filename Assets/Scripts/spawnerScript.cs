@@ -12,6 +12,7 @@ public class spawnerScript : MonoBehaviour
     public GameObject _snakePrefab;
     public GameObject _sheepPrefab;
     public GameObject _bearPrefab;
+    bool _bearSpawned = true;
 
     System.Random _random;
 
@@ -25,8 +26,6 @@ public class spawnerScript : MonoBehaviour
         _nightNum = PlayerPrefs.GetInt(ConstLabels.pref_currentDay);
         _spawnedTonight = 0;
         _random = new System.Random();
-
-        Debug.Log("night num:" + _nightNum);
     }
 
     // Update is called once per frame
@@ -35,9 +34,12 @@ public class spawnerScript : MonoBehaviour
         if ((!_dnScript._daytime) && (_spawnedTonight < (_nightNum * 2) + 15) && (_random.Next(0, 320) == 0)) 
         {
             int r = _random.Next(0, 100);
-            if (r < 5 && _nightNum == 7)
+            
+            if (_nightNum == 7 && _bearSpawned)
             {
-                runSpawn(_bearPrefab);
+                _bearSpawned = false;
+                bearSpawn(_bearPrefab);
+                
             }
             else if (r < 25)
             {
@@ -107,6 +109,31 @@ public class spawnerScript : MonoBehaviour
             float x = _random.Next(-9, 19);
             float y = _random.Next(-9, -3);
             spawnEnemy(toSpawn, x, y);
+        }
+    }
+
+    void bearSpawn(GameObject toSpawn)
+    {
+        float spot = _random.Next(1, 4);
+        if (spot == 1)
+        {
+            float y = _random.Next(-21, -3);
+            spawnEnemy(toSpawn, -9, y);
+        }
+        else if (spot == 2)
+        {
+            float y = _random.Next(-21, -3);
+            spawnEnemy(toSpawn, 19, y);
+        }
+        else if (spot == 3)
+        {
+            float x = _random.Next(-9, 19);
+            spawnEnemy(toSpawn, x, -21);
+        }
+        else if (spot == 4)
+        {
+            float x = _random.Next(-9, 19);
+            spawnEnemy(toSpawn, x, -5);
         }
     }
 }

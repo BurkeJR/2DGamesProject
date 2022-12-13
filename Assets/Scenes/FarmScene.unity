@@ -823,7 +823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333835335
 GameObject:
@@ -2405,6 +2405,18 @@ PrefabInstance:
       propertyPath: _dnScript
       value: 
       objectReference: {fileID: 26504381}
+    - target: {fileID: 2078786508, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
+      propertyPath: OnAnimationEventTriggered.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078786508, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
+      propertyPath: OnAnimationEventTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078786508, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
+      propertyPath: OnAnimationEventTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6155330737357479220, guid: 87d10bc177d79944d881420e1391ffb2, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -6121,7 +6133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653616959953580063, guid: bed51616d169f0f4d96b7e4ef3fe6801, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7653616959953580063, guid: bed51616d169f0f4d96b7e4ef3fe6801, type: 3}
       propertyPath: m_AnchorMax.x

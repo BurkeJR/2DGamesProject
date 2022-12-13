@@ -128,7 +128,6 @@ public class WeaponParent : MonoBehaviour
         else if(!_dnScript._daytime)
         {
             float maxAngle = 10f;
-            print(_ammo);
             if (_ammo > 0)
             {
                 _as.PlayOneShot(_shotgun);
@@ -175,11 +174,23 @@ public class WeaponParent : MonoBehaviour
     {
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(_origin.position, radius))
         {
-            HealthScript health;
-            if (health = collider.GetComponent<HealthScript>())
+            if (collider.gameObject.tag == "Bear")
             {
-                health.GetHit(_swordDamage, transform.parent.gameObject);
+                BearHealth health;
+                if (health = collider.GetComponent<BearHealth>())
+                {
+                    health.GetHit(_swordDamage, transform.parent.gameObject);
+                }
             }
+            else
+            {
+                HealthScript health;
+                if (health = collider.GetComponent<HealthScript>())
+                {
+                    health.GetHit(_swordDamage, transform.parent.gameObject);
+                }
+            }
+                
         }
     }
 

@@ -49,11 +49,26 @@ public class PlantingScript : MonoBehaviour
 
         _cropList = new List<GameObject>();
 
-        PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) + 1);
-        PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) + 1);
-        PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds) + 1);
-        PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds) + 1);
-        PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds) + 1);
+        if(PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) == 0)
+        {
+            PlayerPrefs.SetInt(ConstLabels.pref_corn_seeds, PlayerPrefs.GetInt(ConstLabels.pref_corn_seeds) + 1);
+        }
+        if ((PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds )) == 0)
+        {
+            PlayerPrefs.SetInt(ConstLabels.pref_pepper_seeds, PlayerPrefs.GetInt(ConstLabels.pref_pepper_seeds) + 1);
+        }
+        if (PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) == 0)
+        {
+            PlayerPrefs.SetInt(ConstLabels.pref_carrot_seeds, PlayerPrefs.GetInt(ConstLabels.pref_carrot_seeds) + 1);
+        }
+        if (PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds) == 0)
+        {
+            PlayerPrefs.SetInt(ConstLabels.pref_bean_seeds, PlayerPrefs.GetInt(ConstLabels.pref_bean_seeds) + 1);
+        }
+        if (PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds) == 0)
+        {
+            PlayerPrefs.SetInt(ConstLabels.pref_eggplant_seeds, PlayerPrefs.GetInt(ConstLabels.pref_eggplant_seeds) + 1);
+        }
 
 
         _seedDict.Add(0, ConstLabels.pref_corn_seeds);

@@ -14,8 +14,8 @@ public class DayNightScript : MonoBehaviour
 
     public bool _daytime;
 
-    // the length of the day/night cycle
-    float _cycleLength = 85.0f;
+    // the length of the day/night cycle 85 is DEFAULT
+    float _cycleLength = 30.0f;
     public float _timePassed;
     // the number of seconds between each time update 
     float _updateInterval = 3;

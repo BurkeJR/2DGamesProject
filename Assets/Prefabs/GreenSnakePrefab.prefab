@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 1695281696}
   - component: {fileID: 1695281689}
   - component: {fileID: 1695281695}
-  - component: {fileID: -6851250679140841076}
   - component: {fileID: 4336074282230527333}
   m_Layer: 8
   m_Name: GreenSnakePrefab
@@ -5026,6 +5025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _plantScript: {fileID: 0}
   farmMGRScript: {fileID: 0}
+  _dnScript: {fileID: 0}
   _speed: 1.5
   _manager: {fileID: 0}
 --- !u!114 &1695281695
@@ -5045,7 +5045,7 @@ MonoBehaviour:
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6851250679140841076}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackFeedback, Assembly-CSharp
         m_MethodName: PlayFeedback
         m_Mode: 0
@@ -5061,51 +5061,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _mgrScript: {fileID: 0}
---- !u!114 &-6851250679140841076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906774225671593816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c549d090f193a15409d1637f75f2851a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb2d: {fileID: 1695281694}
-  strength: 16
-  delay: 0.15
-  OnBegin:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1695281689}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnDone:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1695281689}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &4336074282230527333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5120,6 +5075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _plantScript: {fileID: 0}
   farmMGRScript: {fileID: 0}
+  _dnScript: {fileID: 0}
   _speed: 1.5
   _manager: {fileID: 0}
   _tempPrefab: {fileID: 9059296771621791497, guid: d4c78db48e392144596a955e22607a43, type: 3}

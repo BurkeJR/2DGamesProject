@@ -20,33 +20,35 @@ public class bulletScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    _rbody.velocity = transform.right * speed;
-    //}
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if(other.tag == "Enemy")
-    //    {
-    //        Destroy(other.gameObject);
-    //    }
-    //    Destroy(gameObject);
-    //}
 
     private void OnCollisionEnter2D(Collision2D collider)
     {
-        HealthScript health;
-        if (health = collider.gameObject.GetComponent<HealthScript>())
+        if(collider.gameObject.tag == "Bear")
         {
-            health.GetHit(_damage, collider.gameObject);
+            BearHealth health;
+            if (health = collider.gameObject.GetComponent<BearHealth>())
+            {
+                health.GetHit(_damage, collider.gameObject);
+            }
+            else if ((health = collider.gameObject.GetComponent<BearHealth>()) && gameObject.tag == "beanPlant")
+            {
+                health.GetHit(_damage, collider.gameObject);
+                return;
+            }
         }
-        else if ((health = collider.gameObject.GetComponent<HealthScript>()) && gameObject.tag == "beanPlant")
-        {
+        else { 
+            HealthScript health;
+            if (health = collider.gameObject.GetComponent<HealthScript>())
+            {
+            health.GetHit(_damage, collider.gameObject);
+            }
+            else if ((health = collider.gameObject.GetComponent<HealthScript>()) && gameObject.tag == "beanPlant")
+            {
             health.GetHit(_damage, collider.gameObject);
             return;
-        }
+        }}
+        
+        
         Destroy(gameObject);
     }
 }
