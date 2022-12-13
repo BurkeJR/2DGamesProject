@@ -126,7 +126,7 @@ public class ShopInteractionScript : MonoBehaviour
         }
         if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) == 1)
         {
-            _bulletCostText.text = "150";
+            _meleeCostText.text = "150";
         }
         if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) == 2)
         {
@@ -156,18 +156,21 @@ public class ShopInteractionScript : MonoBehaviour
 
     public void UpgradeMelee()
     {
-        if (_upgradeCost < _playerCurrency)
+        if ((PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) == 0 && _upgradeCost < _playerCurrency) ||
+            ((PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) == 1) && _upgradeCost + 50 < _playerCurrency))
         {
             _as.PlayOneShot(_menuClick);
-            _playerCurrency -= _upgradeCost;
-            if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 0)
+            
+            if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) == 0)
             {
+                _playerCurrency -= _upgradeCost;
                 PlayerPrefs.SetInt(ConstLabels.pref_upgrade_melee, 1);
                 PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
                 UpdateShop(); 
             }
-            else if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 1)
+            else if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_melee) == 1)
             {
+                _playerCurrency -= _upgradeCost + 50;
                 PlayerPrefs.SetInt(ConstLabels.pref_upgrade_melee, 2);
                 PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
                 UpdateShop();
@@ -180,7 +183,7 @@ public class ShopInteractionScript : MonoBehaviour
         if (_upgradeCost < _playerCurrency)
         {
             _as.PlayOneShot(_menuClick);
-            _playerCurrency -= _upgradeCost;
+            _playerCurrency -= 150;
             PlayerPrefs.SetInt(ConstLabels.pref_player_gun_spread, 1);
             PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
             UpdateShop();
@@ -189,12 +192,13 @@ public class ShopInteractionScript : MonoBehaviour
 
     public void UpgradeAmmo()
     {
-        if (_upgradeCost < _playerCurrency)
+        if ((PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 1 && _upgradeCost < _playerCurrency) || 
+            ((PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 2) && _upgradeCost+50 < _playerCurrency))
         {
             _as.PlayOneShot(_menuClick);
-            _playerCurrency -= _upgradeCost;
             if(PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 1)
             {
+                _playerCurrency -= _upgradeCost;
                 PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 2);
                 PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
                 UpdateShop();
@@ -202,6 +206,7 @@ public class ShopInteractionScript : MonoBehaviour
             }
             else if (PlayerPrefs.GetInt(ConstLabels.pref_upgrade_ammo) == 2)
             {
+                _playerCurrency -= _upgradeCost + 50;
                 PlayerPrefs.SetInt(ConstLabels.pref_upgrade_ammo, 4);
                 PlayerPrefs.SetInt(ConstLabels.pref_player_currency, _playerCurrency);
                 UpdateShop();
