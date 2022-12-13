@@ -1190,7 +1190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 527, y: 79}
+  m_AnchoredPosition: {x: 499, y: 64}
   m_SizeDelta: {x: -1125.8179, y: -380.3632}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1670207551
@@ -1239,8 +1239,8 @@ MonoBehaviour:
 
 
 
-    PRESS ''1'' AND ''2'' TO SWAP BETWEEN GUN AND KNIFE. BUY UPGRADES
-    IN THE SHOP BY PRESSING ''E'' ON THE SHOP BETWEEN NIGHTS.'
+    PRESS ''1'' , ''2'' , or ''3'' TO SWAP BETWEEN GUN, KNIFE, AND HOE.
+    BUY UPGRADES IN THE SHOP BY PRESSING ''E'' ON THE SHOP BETWEEN NIGHTS.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f9efd3ed2b433e459b291f657eb87af, type: 2}
   m_sharedMaterial: {fileID: -1794464025411880384, guid: 7f9efd3ed2b433e459b291f657eb87af, type: 2}
