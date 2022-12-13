@@ -308,7 +308,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &26504381
 MonoBehaviour:
@@ -350,11 +349,11 @@ MonoBehaviour:
   _weed1Prefab: {fileID: 1874352141210237325, guid: 70d12b3ce9d47ef4f92a74f8340d3f85, type: 3}
   _weed2Prefab: {fileID: 6595132099766352113, guid: 6cadc902eca706145b3655c7167da215, type: 3}
   _weed3Prefab: {fileID: 5006971007342051997, guid: 1b8fb6fb25c6cd9428a048c8ac47b6c2, type: 3}
-  _cornHolder: {fileID: 0}
-  _eggplantHolder: {fileID: 0}
-  _carrotHolder: {fileID: 0}
-  _pepperHolder: {fileID: 0}
-  _beanHolder: {fileID: 0}
+  _cornHolder: {fileID: 1864887625}
+  _eggplantHolder: {fileID: 354994008}
+  _carrotHolder: {fileID: 1387574495}
+  _pepperHolder: {fileID: 1560803296}
+  _beanHolder: {fileID: 1074042688}
   _tMap: {fileID: 0}
   _dirtTile: {fileID: 0}
   _gainCoins: {fileID: 8300000, guid: 7bcd5db70508a6b4aac2ef16d8969e9c, type: 3}
