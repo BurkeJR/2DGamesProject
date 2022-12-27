@@ -1240,7 +1240,8 @@ MonoBehaviour:
 
 
     PRESS ''1'' , ''2'' , or ''3'' TO SWAP BETWEEN GUN, KNIFE, AND HOE.
-    BUY UPGRADES IN THE SHOP BY PRESSING ''E'' ON THE SHOP BETWEEN NIGHTS.'
+    HOE WEEDS TO EARN SOME QUICK CASH. BUY UPGRADES IN THE SHOP BY PRESSING ''E''
+    ON THE SHOP BETWEEN NIGHTS.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f9efd3ed2b433e459b291f657eb87af, type: 2}
   m_sharedMaterial: {fileID: -1794464025411880384, guid: 7f9efd3ed2b433e459b291f657eb87af, type: 2}
